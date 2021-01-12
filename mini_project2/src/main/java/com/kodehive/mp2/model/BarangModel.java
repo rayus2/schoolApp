@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_BARANG") // kasarnya semua SELESAI
+@Table(name="T_BARANG")
 
 public class BarangModel {
 	
