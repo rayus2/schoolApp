@@ -9,7 +9,7 @@ import com.kodehive.mp2.model.BarangModel;
 public interface BarangRepository extends JpaRepository<BarangModel, String>{ 
 
 	
-	/*query for ID*/
+	/*query for ID*/ 
 	@Query("SELECT B FROM BarangModel B WHERE B.kdBarang = ?1")
 	BarangModel noBarang(String kdBarang);
 	
