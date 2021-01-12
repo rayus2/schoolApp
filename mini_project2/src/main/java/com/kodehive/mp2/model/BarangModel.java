@@ -22,10 +22,10 @@ public class BarangModel {
 	private String satuan;
 	
 	@Column(name="T_HARGA_SISWA")
-	private String hargaSiswa;
+	private long hargaSiswa;
 	
 	@Column(name="T_KETRANGAN")
-	private long keterangan;
+	private String keterangan;
 
 	/**
 	 * @return the kdBarang
@@ -72,28 +72,28 @@ public class BarangModel {
 	/**
 	 * @return the hargaSiswa
 	 */
-	public String getHargaSiswa() {
+	public long getHargaSiswa() {
 		return hargaSiswa;
 	}
 
 	/**
 	 * @param hargaSiswa the hargaSiswa to set
 	 */
-	public void setHargaSiswa(String hargaSiswa) {
+	public void setHargaSiswa(long hargaSiswa) {
 		this.hargaSiswa = hargaSiswa;
 	}
 
 	/**
 	 * @return the keterangan
 	 */
-	public long getKeterangan() {
+	public String getKeterangan() {
 		return keterangan;
 	}
 
 	/**
 	 * @param keterangan the keterangan to set
 	 */
-	public void setKeterangan(long keterangan) {
+	public void setKeterangan(String keterangan) {
 		this.keterangan = keterangan;
 	}
 	
