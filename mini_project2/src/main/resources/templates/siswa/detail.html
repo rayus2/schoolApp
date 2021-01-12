@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Siswa</title>
+	</head>
+
+	<body>
+		<h3>Detail Siswa</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="nim_siswa">NIM Siswa</label></td>
+					<td><input name="nim_siswa" th:value="${siswaModel.nim_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_siswa">Nama Siswa</label></td>
+					<td><input name="nama_siswa" th:value="${siswaModel.nama_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="kelas_siswa">Kelas Siswa</label></td>
+					<td><input name="kelas_siswa" th:value="${siswaModel.kelas_siswa}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/siswa/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

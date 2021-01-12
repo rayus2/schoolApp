@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Form Edit Siswa</title>
+	</head>
+
+	<body>
+		<h3>Formulir Edit Siswa</h3>
+		<form method="post" th:action="@{/siswa/save_edit}">
+			<table>
+				<tr>
+					<td><label name="nim_siswa">NIM Siswa</label></td>
+					<td><input name="nim_siswa" th:value="${siswaModel.nim_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_siswa">Nama Siswa</label></td>
+					<td><input name="nama_siswa" th:value="${siswaModel.nama_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="kelas_siswa">Kelas Siswa</label></td>
+					<td><input name="kelas_siswa" th:value="${siswaModel.kelas_siswa}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>
