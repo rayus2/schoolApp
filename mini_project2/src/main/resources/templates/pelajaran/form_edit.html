@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Form Edit Siswa</title>
+	</head>
+
+	<body>
+		<h3>Formulir Edit Siswa</h3>
+		<form method="post" th:action="@{/pelajaran/save_edit}">
+			<table>
+				<tr>
+					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
+					<td><input name="kode_pelajaran" th:value="${pelajaranModel.kode_pelajaran}" readonly/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_pelajaran">Nama Pelajaran</label></td>
+					<td><input name="nama_pelajaran" th:value="${pelajaranModel.nama_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="jam_ajar_pelajaran">Jam Ajar Pelajaran</label></td>
+					<td><input name="jam_ajar_pelajaran" th:value="${pelajaranModel.jam_ajar_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="tingkat_pelajaran">Tingkat Pelajaran</label></td>
+					<td><input name="tingkat_pelajaran" th:value="${pelajaranModel.tingkat_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="keterangan_pelajaran">Keternagan Pelajaran</label></td>
+					<td><input name="keterangan_pelajaran" th:value="${pelajaranModel.keterangan_pelajaran}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

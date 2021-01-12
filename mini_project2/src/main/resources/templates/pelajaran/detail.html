@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Pelajaran</title>
+	</head>
+
+	<body>
+		<h3>Detail Pelajaran</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
+					<td><input name="kode_pelajaran" th:value="${pelajaranModel.kode_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_siswa">Nama Pelajaran</label></td>
+					<td><input name="nama_siswa" th:value="${pelajaranModel.nama_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="kelas_siswa">Jam Ajar Pelajaran</label></td>
+					<td><input name="kelas_siswa" th:value="${pelajaranModel.jam_ajar_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="kelas_siswa">Tingkat Pelajaran</label></td>
+					<td><input name="kelas_siswa" th:value="${pelajaranModel.tingkat_pelajaran}"/></td>
+				</tr>
+				<tr>
+					<td><label name="kelas_siswa">Keternagan Pelajaran</label></td>
+					<td><input name="kelas_siswa" th:value="${pelajaranModel.keterangan_pelajaran}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/pelajaran/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>
