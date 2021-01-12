@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Data Pasien</title>
+	</head>
+	
+	<body>
+		
+		<h1>Tabel Pasien</h1>
+		
+		<form th:action="@{/pasien/search/}">
+			Nama Pasien: <input type="text" name="keyName" /><input type="submit" value="Cari" />
+		</form>
+		
+		<table border="1">
+			<thead>
+				<th>No.Pasien</th>
+				<th>Nama Pasien</th>
+				<th>Gender Pasien</th>
+				<th>Kategori Pasien</th>
+				<th>Biaya Pasien</th>
+				<th>TTL Pasien</th>
+				<th th:colspan=3>Action</th>
+			</thead>
+			
+			<tbody>
+				<tr th:each="pasienModel:${pasienModelList}">
+				
+					<td><a th:text = ${pasienModel.noPasien}></a></td>
+					<td><a th:text = ${pasienModel.namaPasien}></a></td>
+					<td><a th:text = ${pasienModel.genderPasien}></a></td>
+					<td><a th:text = ${pasienModel.kategoriPasien}></a></td>
+					<td>Rp<a th:text = "${pasienModel.biayaPasien}"></a></td>
+					<td><a th:text = "${#calendars.format(pasienModel.ttlPasien, 'dd-MM-yyyy')}"></a></td>
+					<td><a th:href="@{'/pasien/edit/' + ${pasienModel.noPasien}}">Edit</a></td>
+					<td><a th:href=@{/pasien/update?(pasienID=${pasienModel.noPasien})}>Update</a></td>
+					<td><a th:href=@{/pasien/delete?(pasienID=${pasienModel.noPasien})}>Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</body>
+	
+</html>

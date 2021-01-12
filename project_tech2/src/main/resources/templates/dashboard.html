@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dashboard</title>
+</head>
+<body>
+
+	<form>
+		<table>
+			<tr>
+				<td>Username: <a th:text=${firstModel.username}></a>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Password: <a th:text=${firstModel.password}></a>
+				</td>
+			</tr>
+		</table>
+
+	</form>
+	
+	<a href="/project_tech2/login">Ke Login</a>
+
+</body>
+</html>

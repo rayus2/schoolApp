@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Modal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container">
+	<h2>Modal Table</h2>
+	<button type="button" class="btn btn-primary" id="add-pasien">New Data Pasien<span class="fa fa-plus" style="padding-left:10px"></span></button>
+	<button type="button" class="btn btn-primary" id="show-table-pasien">Show Data Pasien<span class="fa fa-eye" style="padding-left:10px"></span></button>
+	
+	<div class="modal fade" id="modal-pasien" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title">Masukan Data
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        </h3>
+	      </div>
+	      <div class="modal-body">
+	        <form id="form-add-pasien">
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">No Pasien:</label>
+	            <input type="text" class="form-control" id="noPasien" placeholder="Masukan Nomor Pasien" />
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">Nama Pasien:</label>
+	            <input type="text" class="form-control" id="namaPasien" placeholder="Masukan Nama Pasien" />
+	          </div>	    
+	          <div class="form-group">
+				<label for="recipient-name" class="col-form-label">Gender Pasien:</label>
+	          	<div class="form-check">
+	          	<input class="form-check-input" type="radio" name="exampleRadios" value="Pria">
+			  	<label class="form-check-label" for="exampleRadios1">
+			    	Pria
+			  	</label>
+			  	</div>
+			  	<div class="form-check">
+			  	<input class="form-check-input" type="radio" name="exampleRadios" value="Wanita">
+			  	<label class="form-check-label" for="exampleRadios2">
+			    	Wanita
+			  	</label>
+				</div>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">Kategori Pasien:</label>
+				<select class="form-control">
+			      <option>--PILIH--</option>
+			      <option id="kategoriPasien" value="BPJS">BPJS</option>
+			      <option id="kategoriPasien" value="Asuransi">Asuransi</option>	     
+			      <option id="kategoriPasien" value="Pribadi">Pribadi</option>
+			    </select>
+				
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Biaya Pasien:</label>
+	            <input type="text" class="form-control" id="biayaPasien" placeholder="Masukan Biaya Pasien">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">TTL Pasien:</label>
+	           	<input class="form-control" type="date" id="ttlPasien">
+			  </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+	        <button type="submit" class="btn btn-primary">Masukan Data</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<table class="table table-bordered">
+		<tbody id="list-pasien">
+		
+			<!--  Result List Pasien -->
+			
+		</tbody>
+	</table>
+	
+  
+</div>
+</body>
+
+<script>
+	
+	function refreshData() {
+		$.ajax({
+			url: '/project_tech2/pasien/list',
+			type: 'get',
+			dataType: 'html',
+			success: function(result){
+				$('#list-pasien').html(result);
+			}
+		});
+	}
+	
+	
+	$('#show-table-pasien').click(function() {
+		var x = 0;
+		$.ajax({
+			url: '/project_tech2/pasien/list',
+			type: 'get',
+			dataType: 'html',
+			success: function(result){
+				$('#list-pasien').html(result);
+			}
+		});
+	});
+	
+	// Modal Create-Pasien
+	$('#add-pasien').click(function(){
+		var noPasien=$(this).val();
+		$.ajax({
+			url:'/project_tech2/pasien/list',
+			type:'get',
+			dataType:'html',
+			data: {noPasien, noPasien},
+			success: function (result){
+				$('#modal-pasien').modal('show');
+				$('#modal-pasien').find('.modal-body').result;
+				$('#list-pasien').html('');
+			}
+		});
+	});
+	
+	// Add Pasien
+	$('#model-pasien').on('submit', '#form-add-pasien', function(){
+		$.ajax({
+			url: '/project_tech2/pasien/addPasien',
+			type: 'post',
+			data: $(this).serialize(), 
+			success: function(result){
+				alert('Data berhasil di masukan');
+				$('#modal-pasien').modal('hide');
+				refreshData();
+			}
+		})
+		return false;
+	});
+
+</script>
+</html>

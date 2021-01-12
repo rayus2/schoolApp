@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Data Pasien</title>
+	</head>
+	
+	<body>
+		
+		<h1>Tabel Pasien</h1>
+		
+		<table border="1">
+			<thead>
+				<th>No.Pasien</th>
+				<th>Nama Pasien</th>
+				<th>Gender Pasien</th>
+				<th>Kategori Pasien</th>
+				<th>Biaya Pasien</th>
+				<th>TTL Pasien</th>
+			</thead>
+			
+			<tbody>
+				<tr th:each="pasienModel:${pasienModelList}">
+				
+					<td><a th:text = ${pasienModel.noPasien}></a></td>
+					<td><a th:text = ${pasienModel.namaPasien}></a></td>
+					<td><a th:text = ${pasienModel.genderPasien}></a></td>
+					<td><a th:text = ${pasienModel.kategoriPasien}></a></td>
+					<td>Rp<a th:text = "${pasienModel.biayaPasien}"></a></td>
+					<td><a th:text = "${#calendars.format(pasienModel.ttlPasien, 'dd-MM-yyyy')}"></a></td>
+					
+				</tr>
+			</tbody>
+		</table>
+		
+	</body>
+	
+</html>

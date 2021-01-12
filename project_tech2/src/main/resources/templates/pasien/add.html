@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Add Data Pasien</title>
+</head>
+
+<body>
+
+	<form action="/project_tech2/hasil/insert" method="post">
+	
+		<h2>Form Pasien</h2>
+		
+		No Pasien <input type="text" name="noPasien" /><br>
+		Nama Pasien <input type="text" name="namaPasien" /><br>
+		Biaya Pasien <input type="text" name="biayaPasien" /><br>
+		
+		<input type="submit" value="Simpan" />
+	
+	</form>
+	<div>
+		<a th:href="@{list}">List</a>
+	</div>
+	
+</body>
+
+</html>

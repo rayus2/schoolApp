@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Form Pasien</title>
+	</head>
+
+	<body>
+		<h3>Formulir Pasien</h3>
+		<form method="post" action="/project_tech2/pasien/addPasien">
+			<table>
+				<tr>
+					<td><label name="noPasien">Nomor Pasien</label></td>
+					<td><input name="noPasien"/></td>
+				</tr>
+				<tr>
+					<td><label name="namaPasien">Nama Pasien</label></td>
+					<td><input name="namaPasien"/></td>
+				</tr>
+				<tr>
+					<td><label name="genderPasien">Gender Pasien</label></td>
+					<td>
+						<input type="radio" name="genderPasien" value="Pria">Pria</radiobutton>
+						<input type="radio" name="genderPasien" value="Wanita">Wanita</radiobutton>
+					</td>
+				</tr>
+				<tr>
+					<td><label name="kategoriPasien">Kategori Pasien</label></td>
+					<td>
+					<select name="kategoriPasien"/>
+						<option value="-" label="--Please Select--"/>
+						<option value="BPJS" label="BPJS"/>
+						<option value="Asuransi" label="Asuransi"/>
+						<option value="Pribadi" label="Pribadi"/>
+					</td>
+				</tr>
+				<tr>
+					<td><label name="biayaPasien">Biaya Pasien</label></td>
+					<td><input name="biayaPasien"/></td>
+				</tr>
+				<tr>
+					<td><label name="ttlPasien">Tanggal Lahir Pasien</label></td>
+					<td><input type="date" name="ttlPasien" /></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<input type="submit" value="Submit"/>
+                    	<input type="reset" value="Reset"/>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

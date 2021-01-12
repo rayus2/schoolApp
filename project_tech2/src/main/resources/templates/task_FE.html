@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" style="font-size:25px">Office Assignment</a>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+
+	<div class="col-md-2">
+		<div class="sidenav">
+			<button class="dropdown-btn">Master<i class="fa fa-caret-down"></i></button>
+			<div class="dropdown-container">
+				<a href="#">Instructor</a> 
+				<a href="#">Student</a> 
+				<a href="#">Department</a>
+			</div>
+			<button class="dropdown-btn">Transaksi<i class="fa fa-caret-down cek"></i></button>
+			<div class="dropdown-container">
+				<a href="#">Enrollment</a> 
+				<a href="#">Course Assignment</a> 
+				<a href="#">Course</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-10">
+		<div class="main">
+			<h2>Task Frontend II</h2>
+			
+		</div>
+	</div>
+<script>
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
+	</script>
+
+</body>
+
+<style>
+body {
+	font-family: "Times New Roman", serif;
+}
+
+.sidenav {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	top: 55px;
+	left: 0;
+	background-color: #f8f8f8;
+	padding-top: 10px;
+}
+
+.sidenav a, .dropdown-btn {
+	text-decoration: none;
+	font-size: 20px;
+	color: #777777;
+	display: block;
+	border: none;
+	background: none;
+	margin:0px;
+	text-align: left;
+	cursor: pointer;
+	outline: none;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+	color: black;
+}
+
+.active {
+	background-color: #f8f8f8;
+	color: black;
+}
+
+.dropdown-container {
+	display: none;
+	padding-left: 30px;
+}
+
+i {
+    float: right;
+    position: relative;
+    left:10px;
+    top:5px;
+} 
+
+.cek{
+	float:right;
+}
+
+</style>
+
+
+</html>
+
+
