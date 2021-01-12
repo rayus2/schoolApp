@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Form Tambah Guru</title>
+	</head>
+
+	<body>
+		<h3>Formulir Guru</h3>
+		<form method="post" th:action="@{/guru/tambah_data}">
+			<table>
+				<tr>
+					<td><label name="nip_guru">NIP Guru</label></td>
+					<td><input name="nip_guru"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_guru">Nama Guru</label></td>
+					<td><input name="nama_guru"/></td>
+				</tr>
+				<tr>
+					<td><label name="telepon_guru">Telepon Guru</label></td>
+					<td><input name="telepon_guru"/></td>
+				</tr>
+				<tr>
+					<td><label name="gender_guru">Gender Guru</label></td>
+					<td><input type='radio' name='gender_guru' value='Pria' />Pria <input
+						type='radio' name='gender_guru' value='Wanita' />Wanita</td>
+				</tr>
+				<tr>
+					<td><label name="gelar_guru">Gelar Guru</label></td>
+					<td><input name="gelar_guru"/></td>
+				</tr>
+				<tr>
+					<td><label name="alamat_guru">Alamat Guru</label></td>
+					<td><input name="alamat_guru"/></td>
+				</tr>
+				<tr>
+                    <td>
+                    	<input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

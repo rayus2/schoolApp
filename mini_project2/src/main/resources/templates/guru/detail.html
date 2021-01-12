@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Guru</title>
+	</head>
+
+	<body>
+		<h3>Detail Siswa</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="nip_guru">NIP Guru</label></td>
+					<td><input name="nip_guru" th:value="${guruModel.nip_guru}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_guru">Nama Guru</label></td>
+					<td><input name="nama_guru" th:value="${guruModel.nama_guru}"/></td>
+				</tr>
+				<tr>
+					<td><label name="telepon_guru">Telepon Guru</label></td>
+					<td><input name="telepon_guru" th:value="${guruModel.telepon_guru}"/></td>
+				</tr>
+				<tr>
+					<td><label name="gender_guru">Gender Guru</label></td>
+					<td><input name="gender_guru" th:value="${guruModel.gender_guru}"/></td>
+				</tr>
+				<tr>
+					<td><label name="gelar_guru">Gelar Guru</label></td>
+					<td><input name="gelar_guru" th:value="${guruModel.gelar_guru}"/></td>
+				</tr>
+				<tr>
+					<td><label name="alamat_guru">Alamat Guru</label></td>
+					<td><input name="alamat_guru" th:value="${guruModel.alamat_guru}"/></td>
+				</tr>
+				
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/guru/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>
