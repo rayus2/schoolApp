@@ -5684,6 +5684,15 @@ input[type='button'].btn-block
     color: #8898aa;
 }
 
+.text-name
+{
+    display: block;
+
+    padding: .25rem .75rem;
+
+    color: #8898aa;
+}
+
 .nav-tabs
 {
     border-bottom: 1px solid #dee2e6;
