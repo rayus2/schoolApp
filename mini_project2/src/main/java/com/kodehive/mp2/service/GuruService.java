@@ -47,6 +47,4 @@ public class GuruService {
 		return guruRepository.getId(nip_guru);
 	}
 	
-	
-
 }

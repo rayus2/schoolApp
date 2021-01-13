@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Kelas</title>
+	</head>
+
+	<body>
+		<h3>Detail Kelas</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="kode_kelas">Kode Kelas</label></td>
+					<td><input name="kode_kelas" th:value="${kelasModel.kode_kelas}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_kelas">Nama Kelas</label></td>
+					<td><input name="nama_kelas" th:value="${kelasModel.nama_kelas}"/></td>
+				</tr>
+				<tr>
+					<td><label name="tingkat_kelas">Tingkat Kelas</label></td>
+					<td><input name="tingkat_kelas" th:value="${kelasModel.tingkat_kelas}"/></td>
+				</tr>
+				<tr>
+					<td><label name="wali_kelas">Wali Kelas</label></td>
+					<td><input name="wali_kelas" th:value="${kelasModel.wali_kelas}"/></td>
+				</tr>
+				<tr>
+					<td><label name="ruang_kelas">Ruang Kelas</label></td>
+					<td><input name="ruang_kelas" th:value="${kelasModel.ruang_kelas}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/kelas/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

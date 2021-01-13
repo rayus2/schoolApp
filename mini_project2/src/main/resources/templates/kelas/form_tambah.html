@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Form Tambah kelas</title>
+	</head>
+
+	<body>
+		<h3>Tambah Kelas</h3>
+		<form method="post" th:action="@{/kelas/tambah_data}">
+			<table>
+				<tr>
+					<td><label name="kode_kelas">Kode Kelas</label></td>
+					<td><input name="kode_kelas"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_kelas">Nama Kelas</label></td>
+					<td><input name="nama_kelas"/></td>
+				</tr>
+				<tr>
+					<td><label name="tingkat_kelas">Tingkat Kelas</label></td>
+					<td><input name="tingkat_kelas"/></td>
+				</tr>
+				<tr>
+					<td><label name="wali_kelas">Wali Kelas</label></td>
+					<td><input name="wali_kelas"/></td>
+				</tr>
+				<tr>
+					<td><label name="ruang_kelas">Ruang Kelas</label></td>
+					<td><input name="ruang_kelas"/></td>
+				</tr>
+				<tr>
+                    <td>
+                    	<input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>

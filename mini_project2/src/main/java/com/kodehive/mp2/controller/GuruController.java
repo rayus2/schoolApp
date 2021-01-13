@@ -1,5 +1,4 @@
-package com.kodehive.mp2.controller.api;
-
+package com.kodehive.mp2.controller;
 import java.util.ArrayList;
 import java.util.List;
 
