@@ -1,6 +1,5 @@
 package com.kodehive.mp2.controller;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,36 +23,6 @@ public class SiswaController {
 	public String index() {
 		return "/index";
 	}
-
-	@RequestMapping("/siswa/fe_list")
-	public String fe_list_siswa(Model model) {
-		
-		List<SiswaModel> siswaModelList = new ArrayList<SiswaModel>();
-		siswaModelList = siswaService.listSiswa();
-		model.addAttribute("siswaModelList", siswaModelList);
-		
-		return "/siswa/fe_list";
-	}
-	
-	@RequestMapping("/siswa/modal_tambah")
-	public String modal_tambah() {
-		return "/siswa/modal-tambah";
-	}
-	
-	@RequestMapping("/siswa/modal_edit")
-	public String modal_edit() {
-		return "/siswa/modal-edit";
-	}
-	
-	@RequestMapping("/siswa/modal_hapus")
-	public String modal_hapus() {
-		return "/siswa/modal-hapus";
-	}
-	
-	@RequestMapping("/siswa/modal_detail")
-	public String modal_detail() {
-		return "/siswa/modal-detail";
-	}
 	
 	@RequestMapping("/siswa/list")
 	public String list_siswa(Model model) {
@@ -75,26 +44,12 @@ public class SiswaController {
 		
 		String nim_siswa = request.getParameter("nim_siswa");
 		String nama_siswa = request.getParameter("nama_siswa");
-		String gender_siswa = request.getParameter("gender_siswa");
-		Date tgllahir_siswa = Date.valueOf(request.getParameter("tgllahir_siswa"));
-		String tempatlahir_siswa = request.getParameter("tempatlahir_siswa");
-		String wali_siswa = request.getParameter("wali_siswa");
-		String pekerjaan_wali_siswa = request.getParameter("pekerjaan_wali_siswa");
-		String telp_wali_siswa = request.getParameter("telp_wali_siswa");
-		String alamat_siswa = request.getParameter("alamat_siswa");
 		String kelas_siswa = request.getParameter("kelas_siswa");
 		
 		SiswaModel siswaModel = new SiswaModel();
 		
 		siswaModel.setNim_siswa(nim_siswa);
 		siswaModel.setNama_siswa(nama_siswa);
-		siswaModel.setGender_siswa(gender_siswa);
-		siswaModel.setTgllahir_siswa(tgllahir_siswa);
-		siswaModel.setTempatlahir_siswa(tempatlahir_siswa);
-		siswaModel.setWali_siswa(wali_siswa);
-		siswaModel.setPekerjaan_wali_siswa(pekerjaan_wali_siswa);
-		siswaModel.setTelp_wali_siswa(telp_wali_siswa);
-		siswaModel.setAlamat_siswa(alamat_siswa);
 		siswaModel.setKelas_siswa(kelas_siswa);
 		
 		siswaService.tambah_data(siswaModel);
@@ -121,26 +76,12 @@ public class SiswaController {
 	
 		String nim_siswa = request.getParameter("nim_siswa");
 		String nama_siswa = request.getParameter("nama_siswa");
-		String gender_siswa = request.getParameter("gender_siswa");
-		Date tgllahir_siswa = Date.valueOf(request.getParameter("tgllahir_siswa"));
-		String tempatlahir_siswa = request.getParameter("tempatlahir_siswa");
-		String wali_siswa = request.getParameter("wali_siswa");
-		String pekerjaan_wali_siswa = request.getParameter("pekerjaan_wali_siswa");
-		String telp_wali_siswa = request.getParameter("telp_wali_siswa");
-		String alamat_siswa = request.getParameter("alamat_siswa");
 		String kelas_siswa = request.getParameter("kelas_siswa");
 		
 		SiswaModel siswaModel = new SiswaModel();
 		
 		siswaModel.setNim_siswa(nim_siswa);
 		siswaModel.setNama_siswa(nama_siswa);
-		siswaModel.setGender_siswa(gender_siswa);
-		siswaModel.setTgllahir_siswa(tgllahir_siswa);
-		siswaModel.setTempatlahir_siswa(tempatlahir_siswa);
-		siswaModel.setWali_siswa(wali_siswa);
-		siswaModel.setPekerjaan_wali_siswa(pekerjaan_wali_siswa);
-		siswaModel.setTelp_wali_siswa(telp_wali_siswa);
-		siswaModel.setAlamat_siswa(alamat_siswa);
 		siswaModel.setKelas_siswa(kelas_siswa);
 		
 		siswaService.save_edit(siswaModel);
