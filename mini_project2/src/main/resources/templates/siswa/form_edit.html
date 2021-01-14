@@ -18,6 +18,37 @@
 					<td><input name="nama_siswa" th:value="${siswaModel.nama_siswa}"/></td>
 				</tr>
 				<tr>
+					<td><label name="gender_siswa">Gender Siswa</label></td>
+					<td>
+						<input type="radio" name="gender_siswa" value="Pria" th:field="${siswaModel.gender_siswa}">Pria</radiobutton>
+						<input type="radio" name="gender_siswa" value="Wanita" th:field="${siswaModel.gender_siswa}">Wanita</radiobutton>
+					</td>
+				</tr>
+				<tr>
+					<td><label name="tgllahir_siswa">Tanggal Lahir Siswa</label></td>
+					<td><input type="date" name="tgllahir_siswa" th:value="${siswaModel.tgllahir_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="tempatlahir_siswa">Tempat Lahir Siswa</label></td>
+					<td><input name="tempatlahir_siswa" th:value="${siswaModel.tempatlahir_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="wali_siswa">Wali Siswa</label></td>
+					<td><input name="wali_siswa" th:value="${siswaModel.wali_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="pekerjaan_wali_siswa">Pekerjaan Wali Siswa</label></td>
+					<td><input name="pekerjaan_wali_siswa" th:value="${siswaModel.pekerjaan_wali_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="telp_wali_siswa">Telp Wali Siswa</label></td>
+					<td><input name="telp_wali_siswa" th:value="${siswaModel.telp_wali_siswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="alamat_siswa">Alamat Siswa</label></td>
+					<td><textarea name="alamat_siswa" th:field="${siswaModel.alamat_siswa}"></textarea></td>
+				</tr>
+				<tr>
 					<td><label name="kelas_siswa">Kelas Siswa</label></td>
 					<td><input name="kelas_siswa" th:value="${siswaModel.kelas_siswa}"/></td>
 				</tr>

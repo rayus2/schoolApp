@@ -12,9 +12,16 @@
 		
 		<table border="1">
 			<thead>
-				<th>NIM Siswa</th>
-				<th>Nama Siswa</th>
-				<th>Kelas Siswa</th>
+				<th>NIM </th>
+				<th>Nama</th>
+				<th>Gender</th>
+				<th>Tanggal Lahir</th>
+				<th>Tempat Lahir</th>
+				<th>Wali</th>
+				<th>Pekerjaan Wali</th>
+				<th>No.Telp Wali</th>
+				<th>Alamat </th>
+				<th>Kelas </th>
 				<th th:colspan=3>Action</th>
 				
 			</thead>
@@ -24,7 +31,15 @@
 				
 					<td><a th:text = ${siswaModel.nim_siswa}></a></td>
 					<td><a th:text = ${siswaModel.nama_siswa}></a></td>
+					<td><a th:text = ${siswaModel.gender_siswa}></a></td>
+					<td><a th:text = ${siswaModel.tgllahir_siswa}></a></td>
+					<td><a th:text = ${siswaModel.tempatlahir_siswa}></a></td>
+					<td><a th:text = ${siswaModel.wali_siswa}></a></td>
+					<td><a th:text = ${siswaModel.pekerjaan_wali_siswa}></a></td>
+					<td><a th:text = ${siswaModel.telp_wali_siswa}></a></td>
+					<td><a th:text = ${siswaModel.alamat_siswa}></a></td>
 					<td><a th:text = ${siswaModel.kelas_siswa}></a></td>
+					
 					<td><a th:href = @{/siswa/edit_data?(siswaID=${siswaModel.nim_siswa})}>Edit</a></td>
 					<td><a th:href = @{/siswa/delete_data?(siswaID=${siswaModel.nim_siswa})}>Delete</a></td>
 					<td><a th:href = @{/siswa/detail_data?(siswaID=${siswaModel.nim_siswa})}>Detail</a></td>
