@@ -19,6 +19,36 @@ public class PelajaranController {
 	@Autowired
 	private PelajaranService pelajaranService;
 	
+	@RequestMapping("/home")
+	public String home() {
+		return "/home";
+	}
+	
+	@RequestMapping("/pelajaran/fe_list")
+	public String fe_list(Model model) {
+		
+		List<PelajaranModel> pelajaranModelList = new ArrayList<PelajaranModel>();
+		pelajaranModelList = pelajaranService.listPelajaran();
+		model.addAttribute("pelajaranModelList", pelajaranModelList);
+		
+		return "/pelajaran/fe_list";
+	}
+	
+	@RequestMapping("/pelajaran/modal_tambah")
+	public String modal_tambah() {
+		return "/pelajaran/modal-tambah";
+	}
+	
+	@RequestMapping("/pelajaran/modal_edit")
+	public String modal_edit() {
+		return "/pelajaran/modal-edit";
+	}
+	
+	@RequestMapping("/pelajaran/modal_hapus")
+	public String modal_hapus() {
+		return "/pelajaran/modal-hapus";
+	}
+	
 	@RequestMapping("/pelajaran/list")
 	public String list_pelajaran(Model model) {
 		
