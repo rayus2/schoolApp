@@ -1,11 +1,11 @@
 package com.kodehive.mp2.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +19,30 @@ public class PelajaranController {
 	@Autowired
 	private PelajaranService pelajaranService;
 	
-	@RequestMapping("/home")
-	public String home() {
-		return "/home";
+	@RequestMapping("/sidenav")
+	public String sidenav() {
+		return "/components/sidenav";
 	}
 	
-	@RequestMapping("/pelajaran/fe_list")
-	public String fe_list(Model model) {
+	@RequestMapping("/topnav")
+	public String topnav() {
+		return "/components/topnav";
+	}
+	
+	@RequestMapping("pelajaran/sidenav")
+	public String p_sidenav() {
+		return "/components/sidenav";
+	}
+	
+	@RequestMapping("pelajaran/topnav")
+	public String p_topnav() {
+		return "/components/topnav";
+	}
+	
+	@RequestMapping("pelajaran/fe_list")
+	public String fe_list(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
 		
-		List<PelajaranModel> pelajaranModelList = new ArrayList<PelajaranModel>();
-		pelajaranModelList = pelajaranService.listPelajaran();
+		Page<PelajaranModel> pelajaranModelList = pelajaranService.listPelajaran(pageable);
 		model.addAttribute("pelajaranModelList", pelajaranModelList);
 		
 		return "/pelajaran/fe_list";
@@ -40,7 +54,14 @@ public class PelajaranController {
 	}
 	
 	@RequestMapping("/pelajaran/modal_edit")
-	public String modal_edit() {
+	public String modal_edit(HttpServletRequest request, Model model) {
+		
+		String pelajaranID = request.getParameter("pelajaranID");
+		PelajaranModel pelajaranModel = new PelajaranModel();
+		pelajaranModel = this.pelajaranService.getId(pelajaranID);
+		
+		model.addAttribute("pelajaranModel", pelajaranModel);
+		
 		return "/pelajaran/modal-edit";
 	}
 	
@@ -49,11 +70,23 @@ public class PelajaranController {
 		return "/pelajaran/modal-hapus";
 	}
 	
-	@RequestMapping("/pelajaran/list")
-	public String list_pelajaran(Model model) {
+	@RequestMapping("/pelajaran/modal_detail")
+	public String modal_detail(HttpServletRequest request, Model model) {
 		
-		List<PelajaranModel> pelajaranModelList = new ArrayList<PelajaranModel>();
-		pelajaranModelList = pelajaranService.listPelajaran();
+		String pelajaranID = request.getParameter("pelajaranID");
+		
+		PelajaranModel pelajaranModel = new PelajaranModel();
+		pelajaranModel = this.pelajaranService.detail_data(pelajaranID);
+
+		model.addAttribute("pelajaranModel", pelajaranModel);
+		
+		return "/pelajaran/modal-detail";
+	}
+	
+	@RequestMapping("/pelajaran/list")
+	public String list_pelajaran(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+		
+		Page<PelajaranModel> pelajaranModelList = pelajaranService.listPelajaran(pageable);
 		model.addAttribute("pelajaranModelList", pelajaranModelList);
 		
 		return "/pelajaran/list";
@@ -85,7 +118,7 @@ public class PelajaranController {
 		
 		model.addAttribute("pelajaranModel", pelajaranModel);
 		
-		return "redirect:/pelajaran/list";
+		return "redirect:/pelajaran/fe_list";
 	}
 	
 	@RequestMapping("/pelajaran/edit_data")
@@ -121,7 +154,7 @@ public class PelajaranController {
 		
 		model.addAttribute("pelajaranModel", pelajaranModel);
 	
-		return "redirect:/pelajaran/list/";
+		return "redirect:/pelajaran/fe_list/";
 	}
 	
 	@RequestMapping("/pelajaran/delete_data")

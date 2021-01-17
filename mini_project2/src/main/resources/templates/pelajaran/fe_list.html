@@ -1,4 +1,66 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
 
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+	<meta name="author" content="Creative Tim">
+	<title>KH-Bootcamp B2 - School App</title>
+	
+	<!-- Favicon -->
+	<link rel="icon" href="../assets/img/brand/logo.png" type="image/png">
+	
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+	
+	<!-- Icons -->
+	<link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" >
+	<link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+	
+	<!-- Page plugins -->
+	<!-- Argon CSS -->
+	<link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  	<!-- Sidenav -->
+	<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white">
+		<div class="scrollbar-inner">
+			<!-- Brand -->
+			<div class="sidenav-header  align-items-center" style="height: auto">
+				<a class="navbar-brand pb-0" href="/mp2"> <img
+					src="../assets/img/brand/appDesign.png" class="navbar-brand-img"
+					alt="..." id="logo" >
+				</a>
+			</div>
+			<div id="sidenav-main"></div>
+		</div>
+	</nav>
+	
+	
+	<!-- Main content -->
+	<div class="main-content" id="panel">
+		
+		<div id="content">
+		
 <!-- Header -->
 <div class="header bg-primary pb-6">
 	<div class="container-fluid">
@@ -14,6 +76,9 @@
 						</ol>
 					</nav>
 				</div>
+				<div class="col-lg-6 col-5 text-right">
+	              <button type="button" class="btn btn-neutral" id="modal-tambah">Tambah Data</button>
+	            </div>
 			</div>
 
 		</div>
@@ -28,7 +93,7 @@
 				<!-- Card header -->
 				<div class="card-header border-0"></div>
 				<div class="table-responsive">
-					<table class="table align-items-center table-flush">
+					<table class="table align-items-center table-flush" id="pelajaranTable">
 						<thead class="thead-light">
 							<tr>
 								<th >Kode</th>
@@ -36,19 +101,19 @@
 								<th >Jam Ajar</th>
 								<th >Tingkat</th>
 								<th >Keterangan</th>
-								<th colspan="3" style="width:80px">Action</th>
+								<th colspan="3">Action</th>
 							</tr>
 						</thead>
 						<tbody class="list">
 							<tr th:each="pelajaranModel:${pelajaranModelList}">
-								<td class="budget" th:text = ${pelajaranModel.kode_pelajaran}></td>
-								<td class="budget" th:text = ${pelajaranModel.nama_pelajaran}></td>
-								<td class="budget" th:text = ${pelajaranModel.jam_ajar_pelajaran}></td>
-								<td class="budget" th:text = ${pelajaranModel.tingkat_pelajaran}></td>
-								<td class="budget" th:text = ${pelajaranModel.keterangan_pelajaran}></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" th:href = @{/pelajaran/edit_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}> Edit </button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" th:href = @{/pelajaran/delete_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}>Delete</button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" th:href = @{/pelajaran/detail_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}>Detail</button></td>
+								<td th:text = ${pelajaranModel.kode_pelajaran}></td>
+								<td th:text = ${pelajaranModel.nama_pelajaran}></td>
+								<td th:text = ${pelajaranModel.jam_ajar_pelajaran}></td>
+								<td th:text = ${pelajaranModel.tingkat_pelajaran}></td>
+								<td th:text = ${pelajaranModel.keterangan_pelajaran}></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" id="modal-edit" th:value=${pelajaranModel.kode_pelajaran}> Edit </button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" id="modal-hapus" th:value=${pelajaranModel.kode_pelajaran}>Delete</button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" id="modal-detail" th:value=${pelajaranModel.kode_pelajaran}>Detail</button></td>
 							</tr>
 
 						</tbody>
@@ -101,4 +166,105 @@
 			</div>
 		</div>
 	</footer>
+	
+	<div id="modal-content-tambah">
+	</div>
+	
+	<div id="modal-content-edit">
+	</div>
+	
+	<div id="modal-content-hapus">
+	</div>
+
+	<div id="modal-content-detail">
+	</div>
+
+	</div>
+		
 </div>
+  
+  
+		<!-- Argon Scripts -->
+		<!-- Core -->
+		<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+		<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+		<script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+		<script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+		<!-- Optional JS -->
+		<script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
+		<script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+		<!-- Argon JS -->
+		<script src="../assets/js/argon.js?v=1.2.0"></script>
+		<script type="text/javascript">
+		$(function(){
+			$("#modal-content-tambah").load("modal_tambah")
+			$("#modal-content-edit").load("modal_edit")
+			$("#modal-content-hapus").load("modal_hapus")
+			$("#modal-content-detail").load("modal_detail")
+
+			$("#sidenav-main").load("sidenav");
+			$("#topnav").load("topnav");
+
+			$("#logo").on("click", function(){
+				$.ajax({
+					url:'index',
+					datType: 'html',
+					success: function(result){
+						location.reload(url);
+					}
+				})
+			})
+			
+			$(".table #modal-detail").on('click', function() {
+				var kode_pelajaran = $(this).val();
+				$.ajax({
+					type: 'get',
+					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
+					success: function (pelajaranModel){
+						$("#modal-detail-data").modal("show");
+						$('#modal-detail-data #kode_pelajaran').text(": "+pelajaranModel.kode_pelajaran);
+						$('#modal-detail-data #nama_pelajaran').text(": "+pelajaranModel.nama_pelajaran);	
+						$('#modal-detail-data #jam_ajar_pelajaran').text(": "+pelajaranModel.jam_ajar_pelajaran);	
+						$('#modal-detail-data #tingkat_pelajaran').text(": "+pelajaranModel.tingkat_pelajaran);	
+						$('#modal-detail-data #keterangan_pelajaran').text(": "+pelajaranModel.keterangan_pelajaran);						
+					}
+				})
+			})
+				
+			$("#modal-tambah").on("click", function(){
+				$("#modal-tambah-data").modal("show");
+			})
+			
+			$(".table #modal-hapus").on("click", function(){
+				$("#modal-hapus-data").modal("show");
+			})
+			
+			$(".table #modal-hapus").on("click", function(){
+				var kode_pelajaran = $(this).val();
+				$("#modal-hapus-data").modal("show");
+				$("#modal-hapus-data #hapus").val(kode_pelajaran);
+			})
+			
+			$(".table #modal-edit").on("click", function(){
+				var kode_pelajaran = $(this).val();
+				$.ajax({
+					type: 'get',
+					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
+					success: function (pelajaranModel){
+						$("#modal-edit-data").modal("show");
+						$('#modal-edit-data #kode_pelajaran').val(pelajaranModel.kode_pelajaran);
+						$('#modal-edit-data #nama_pelajaran').val(pelajaranModel.nama_pelajaran);	
+						$('#modal-edit-data #jam_ajar_pelajaran').val(pelajaranModel.jam_ajar_pelajaran);	
+						$('#modal-edit-data #tingkat_pelajaran').val(pelajaranModel.tingkat_pelajaran);	
+						$('#modal-edit-data #keterangan_pelajaran').val(pelajaranModel.keterangan_pelajaran);						
+					}
+				})
+			})
+			
+		})
+
+		</script>
+	</body>
+
+</html>

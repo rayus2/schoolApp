@@ -1,12 +1,13 @@
 package com.kodehive.mp2.controller;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,46 +21,63 @@ public class SiswaController {
 	@Autowired
 	private SiswaService siswaService;
 	
+	@RequestMapping("siswa/sidenav")
+	public String p_sidenav() {
+		return "/components/sidenav";
+	}
+	
+	@RequestMapping("siswa/topnav")
+	public String p_topnav() {
+		return "/components/topnav";
+	}
+	
 	@RequestMapping("/")
 	public String index() {
 		return "/index";
 	}
 
-	@RequestMapping("/siswa/fe_list")
-	public String fe_list_siswa(Model model) {
+	@RequestMapping("siswa/fe_list")
+	public String fe_list_siswa(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
 		
-		List<SiswaModel> siswaModelList = new ArrayList<SiswaModel>();
-		siswaModelList = siswaService.listSiswa();
+		Page<SiswaModel> siswaModelList = siswaService.listSiswa(pageable);
 		model.addAttribute("siswaModelList", siswaModelList);
 		
-		return "/siswa/fe_list";
+		return "siswa/fe_list";
 	}
 	
-	@RequestMapping("/siswa/modal_tambah")
+	@RequestMapping("siswa/modal_tambah")
 	public String modal_tambah() {
-		return "/siswa/modal-tambah";
+		return "siswa/modal-tambah";
 	}
 	
-	@RequestMapping("/siswa/modal_edit")
+	@RequestMapping("siswa/modal_edit")
 	public String modal_edit() {
-		return "/siswa/modal-edit";
+		return "siswa/modal-edit";
 	}
 	
-	@RequestMapping("/siswa/modal_hapus")
+	@RequestMapping("siswa/modal_hapus")
 	public String modal_hapus() {
-		return "/siswa/modal-hapus";
+		return "siswa/modal-hapus";
 	}
 	
-	@RequestMapping("/siswa/modal_detail")
-	public String modal_detail() {
-		return "/siswa/modal-detail";
+	@RequestMapping("siswa/modal_detail")
+	public String modal_detail(HttpServletRequest request, Model model) {
+		
+		String siswaID = request.getParameter("siswaID");
+		
+		SiswaModel siswaModel = new SiswaModel();
+		siswaModel = this.siswaService.detail_data(siswaID);
+
+		model.addAttribute("siswaModel", siswaModel);
+		
+		
+		return "siswa/modal-detail";
 	}
 	
 	@RequestMapping("/siswa/list")
-	public String list_siswa(Model model) {
+	public String list_siswa(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
 		
-		List<SiswaModel> siswaModelList = new ArrayList<SiswaModel>();
-		siswaModelList = siswaService.listSiswa();
+		Page<SiswaModel> siswaModelList = siswaService.listSiswa(pageable);
 		model.addAttribute("siswaModelList", siswaModelList);
 		
 		return "/siswa/list";
@@ -101,7 +119,7 @@ public class SiswaController {
 		
 		model.addAttribute("siswaModel", siswaModel);
 		
-		return "redirect:/siswa/list";
+		return "redirect:/siswa/fe_list";
 	}
 	
 	@RequestMapping("/siswa/edit_data")
@@ -147,7 +165,7 @@ public class SiswaController {
 		
 		model.addAttribute("siswaModel", siswaModel);
 	
-		return "redirect:/siswa/list/";
+		return "redirect:/siswa/fe_list";
 	}
 	
 	@RequestMapping("/siswa/delete_data")
@@ -156,7 +174,7 @@ public class SiswaController {
 		String nim_siswa = request.getParameter("siswaID");
 		this.siswaService.delete_data(nim_siswa);
 		
-		return "redirect:/siswa/list";
+		return "redirect:/siswa/fe_list";
 	}
 	
 	@RequestMapping("/siswa/detail_data")

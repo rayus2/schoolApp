@@ -1,11 +1,11 @@
 package com.kodehive.mp2.controller.api;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,16 +36,24 @@ public class PelajaranApiController {
 	}
 	
 	@GetMapping("/pelajaran/api_get")
-	public List<PelajaranModel> getAll_siswa(){
+	public Page<PelajaranModel> getAll_pelajaran(Pageable pageable){
 		
-		List<PelajaranModel> pelajaranModelList = new ArrayList<PelajaranModel>();
-		pelajaranModelList = this.pelajaranService.listPelajaran();
+		 Page<PelajaranModel> pelajaranModelList = this.pelajaranService.listPelajaran(pageable);
 		
 		return pelajaranModelList;
 	}
 	
+	@GetMapping("/pelajaran/api_getById")
+	public PelajaranModel getById_pelajaran(@RequestParam String kode_pelajaran){
+		
+		PelajaranModel pelajaranModel = new PelajaranModel();
+		pelajaranModel = this.pelajaranService.detail_data(kode_pelajaran);
+		
+		return pelajaranModel;
+	}
+	
 	@PutMapping("/pelajaran/api_put")
-	public Map<String, Object> put_siswa(@RequestBody PelajaranModel siswaModel){
+	public Map<String, Object> put_pelajaran(@RequestBody PelajaranModel siswaModel){
 		
 		this.pelajaranService.save_edit(siswaModel);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -57,7 +65,7 @@ public class PelajaranApiController {
 	}
 	
 	@DeleteMapping("/pelajaran/api_delete")
-	public Map<String, Object> delete_siswa(@RequestParam String kode_pelajaran) {
+	public Map<String, Object> delete_pelajaran(@RequestParam String kode_pelajaran) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
