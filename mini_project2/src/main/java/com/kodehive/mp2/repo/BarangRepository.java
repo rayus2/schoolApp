@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.kodehive.mp2.model.BarangModel;
 
-public interface BarangRepository extends JpaRepository<BarangModel, String>{ // kasarnya SELESAI
+public interface BarangRepository extends JpaRepository<BarangModel, String>{
 
 	
 	@Query("SELECT B FROM BarangModel B WHERE B.kdBarang = ?1")
-	BarangModel noBarang(String kdBarang);
+	BarangModel getId(String kdBarang);
 	
 	
 }
