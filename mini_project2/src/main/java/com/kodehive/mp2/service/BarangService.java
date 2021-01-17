@@ -18,27 +18,38 @@ public class BarangService {
 	@Autowired
 	private BarangRepository barangRepository;
 	
-	public List<BarangModel> temukan() {
+	public List<BarangModel> listBarang() {
 		return barangRepository.findAll();
 	}
 	
-	public void barangSave(BarangModel barangModel) {
+	public void tambah_data(BarangModel barangModel) {
 		barangRepository.save(barangModel);
 	
 	}
 	
-	public BarangModel barangUpdate(BarangModel barangModel) {
-		 return barangRepository.save(barangModel);
+	public BarangModel getId(String kdBarang) {
+		// TODO Auto-generated method stub
+		return this.barangRepository.getId(kdBarang);
+	}
+	
+	public void save_edit(BarangModel barangModel) {
+		// TODO Auto-generated method stub
+		barangRepository.save(barangModel);
 	}
 
-	public void barangHapus(String kdBarang) {
+	public void delete_data(String kdBarang) {
 		// TODO Auto-generated method stub
 		barangRepository.deleteById(kdBarang);
 	}
-	
-	public BarangModel barangIDBaca(String idBarang) {
-		return barangRepository.noBarang(idBarang);
+
+	public BarangModel detail_data(String kdBarang) {
+		// TODO Auto-generated method stub
+		return barangRepository.getId(kdBarang);
 	}
-	
+
+	public Page<BarangModel> listBarang(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return barangRepository.findAll(pageable);
+	}
 
 } 
