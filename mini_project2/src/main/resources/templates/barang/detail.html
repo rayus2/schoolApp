@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Barang</title>
+	</head>
+
+	<body>
+		<h3>Detail Barang</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="kd_Barang">Kode Barang</label></td>
+					<td><input name="kd_Barang" th:value="${barangModel.kdBarang}"/></td>
+				</tr>
+				<tr>
+					<td><label name="nama_Barang">Nama Barang</label></td>
+					<td><input name="nama_Barang" th:value="${barangModel.namaBarang}"/></td>
+				</tr>
+				<tr>
+					<td><label name="satuan">Satuan</label></td>
+					<td><input name="satuan" th:value="${barangModel.satuan}"/></td>
+				</tr>
+				<tr>
+					<td><label name="harga_Siswa">Harga Siswa</label></td>
+					<td><input name="harga_Siswa" th:value="${barangModel.hargaSiswa}"/></td>
+				</tr>
+				<tr>
+					<td><label name="keterangan">Keterangan</label></td>
+					<td><input name="keterangan" th:value="${barangModel.keterangan}"/></td>
+				</tr>
+				
+				
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/barang/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>
