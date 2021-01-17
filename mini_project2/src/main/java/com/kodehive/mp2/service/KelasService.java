@@ -3,6 +3,8 @@ package com.kodehive.mp2.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +46,11 @@ public class KelasService {
 	public KelasModel detail_data(String kode_kelas) {
 		// TODO Auto-generated method stub
 		return kelasRepository.getId(kode_kelas);
+	}
+
+	public Page<KelasModel> listKelas(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return kelasRepository.findAll(pageable);
 	}
 
 }

@@ -5,6 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,54 @@ public class GuruController {
 	
 	@Autowired
 	private GuruService guruService;
+	
+	@RequestMapping("guru/sidenav")
+	public String p_sidenav() {
+		return "/components/sidenav";
+	}
+	
+	@RequestMapping("guru/topnav")
+	public String p_topnav() {
+		return "/components/topnav";
+	}
+	
+	@RequestMapping("guru/fe_list")
+	public String fe_list_guru(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+		
+		Page<GuruModel> guruModelList = guruService.listGuru(pageable);
+		model.addAttribute("guruModelList", guruModelList);
+		
+		return "guru/fe_list";
+	}
+	
+	@RequestMapping("guru/modal_tambah")
+	public String modal_tambah() {
+		return "guru/modal-tambah";
+	}
+	
+	@RequestMapping("guru/modal_edit")
+	public String modal_edit() {
+		return "guru/modal-edit";
+	}
+	
+	@RequestMapping("guru/modal_hapus")
+	public String modal_hapus() {
+		return "guru/modal-hapus";
+	}
+	
+	@RequestMapping("guru/modal_detail")
+	public String modal_detail(HttpServletRequest request, Model model) {
+		
+		String guruID = request.getParameter("guruID");
+		
+		GuruModel guruModel = new GuruModel();
+		guruModel = this.guruService.detail_data(guruID);
+
+		model.addAttribute("guruModel", guruModel);
+		
+		
+		return "guru/modal-detail";
+	}
 	
 	@RequestMapping("/guru/list")
 	public String list_guru(Model model) {
@@ -56,7 +107,7 @@ public class GuruController {
 		
 		model.addAttribute("guruModel", guruModel);
 		
-		return "redirect:/guru/list";
+		return "redirect:/guru/fe_list";
 	}
 	
 	@RequestMapping("/guru/edit_data")
@@ -94,7 +145,7 @@ public class GuruController {
 		
 		model.addAttribute("guruModel", guruModel);
 	
-		return "redirect:/guru/list/";
+		return "redirect:/guru/fe_list";
 	}
 	
 	@RequestMapping("/guru/delete_data")
@@ -103,7 +154,7 @@ public class GuruController {
 		String nip_guru = request.getParameter("guruID");
 		this.guruService.delete_data(nip_guru);
 		
-		return "redirect:/guru/list";
+		return "redirect:/guru/fe_list";
 	}
 	
 	@RequestMapping("/guru/detail_data")

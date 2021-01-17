@@ -5,6 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,55 @@ public class KelasController {
 	
 	@Autowired
 	private KelasService kelasService;
+	
+	@RequestMapping("kelas/sidenav")
+	public String p_sidenav() {
+		return "/components/sidenav";
+	}
+	
+	@RequestMapping("kelas/topnav")
+	public String p_topnav() {
+		return "/components/topnav";
+	}
+	
+
+	@RequestMapping("kelas/fe_list")
+	public String fe_list_kelas(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+		
+		Page<KelasModel> kelasModelList = kelasService.listKelas(pageable);
+		model.addAttribute("kelasModelList", kelasModelList);
+		
+		return "kelas/fe_list";
+	}
+	
+	@RequestMapping("kelas/modal_tambah")
+	public String modal_tambah() {
+		return "kelas/modal-tambah";
+	}
+	
+	@RequestMapping("kelas/modal_edit")
+	public String modal_edit() {
+		return "kelas/modal-edit";
+	}
+	
+	@RequestMapping("kelas/modal_hapus")
+	public String modal_hapus() {
+		return "kelas/modal-hapus";
+	}
+	
+	@RequestMapping("kelas/modal_detail")
+	public String modal_detail(HttpServletRequest request, Model model) {
+		
+		String kelasID = request.getParameter("kelasID");
+		
+		KelasModel kelasModel = new KelasModel();
+		kelasModel = this.kelasService.detail_data(kelasID);
+
+		model.addAttribute("kelasModel", kelasModel);
+		
+		
+		return "kelas/modal-detail";
+	}
 	
 	@RequestMapping("/kelas/list")
 	public String list_kelas(Model model) {
@@ -56,7 +108,7 @@ public class KelasController {
 		
 		model.addAttribute("kelasModel", kelasModel);
 		
-		return "redirect:/kelas/list";
+		return "redirect:/kelas/fe_list";
 	}
 	
 	@RequestMapping("/kelas/edit_data")
@@ -92,7 +144,7 @@ public class KelasController {
 		
 		model.addAttribute("kelasModel", kelasModel);
 	
-		return "redirect:/kelas/list/";
+		return "redirect:/kelas/fe_list";
 	}
 	
 	@RequestMapping("/kelas/delete_data")
@@ -101,7 +153,7 @@ public class KelasController {
 		String kode_kelas = request.getParameter("kelasID");
 		this.kelasService.delete_data(kode_kelas);
 		
-		return "redirect:/kelas/list";
+		return "redirect:/kelas/fe_list";
 	}
 	
 	@RequestMapping("/kelas/detail_data")

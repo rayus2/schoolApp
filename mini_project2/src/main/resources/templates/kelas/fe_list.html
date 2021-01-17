@@ -72,7 +72,7 @@
 							<li class="breadcrumb-item"><a href="#"><i
 									class="fas fa-home"></i></a></li>
 							<li class="breadcrumb-item"><a href="#">Master</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Pelajaran</li>
+							<li class="breadcrumb-item active" aria-current="page">Kelas</li>
 						</ol>
 					</nav>
 				</div>
@@ -93,30 +93,31 @@
 				<!-- Card header -->
 				<div class="card-header border-0"></div>
 				<div class="table-responsive">
-					<table class="table align-items-center table-flush" id="pelajaranTable">
+					<table class="table align-items-center table-flush">
 						<thead class="thead-light">
 							<tr>
-								<th >Kode</th>
-								<th >Nama</th>
-								<th >Jam Ajar</th>
+								<th >Kode Kelas</th>
+								<th >Nama Kelas</th>
+								<th >Tingkat Kelas</th>
 								<th colspan="3">Action</th>
 							</tr>
 						</thead>
 						<tbody class="list">
-							<tr th:each="pelajaranModel:${pelajaranModelList}">
-								<td th:text = ${pelajaranModel.kode_pelajaran}></td>
-								<td th:text = ${pelajaranModel.nama_pelajaran}></td>
-								<td th:text = ${pelajaranModel.jam_ajar_pelajaran}></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" id="modal-edit" th:value=${pelajaranModel.kode_pelajaran}> Edit </button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" id="modal-hapus" th:value=${pelajaranModel.kode_pelajaran}>Delete</button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" id="modal-detail" th:value=${pelajaranModel.kode_pelajaran}>Detail</button></td>
+							<tr th:each="kelasModel:${kelasModelList}">
+								<td th:text = ${kelasModel.kode_kelas}></td>
+								<td th:text = ${kelasModel.nama_kelas}></td>
+								<td th:text = ${kelasModel.tingkat_kelas}></td>
+								
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" id="modal-edit" th:value=${kelasModel.kode_kelas}> Edit </button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" id="modal-hapus" th:value=${kelasModel.kode_kelas}>Delete</button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" id="modal-detail" th:value=${kelasModel.kode_kelas}>Detail</button></td>
 							</tr>
 
 						</tbody>
 					</table>
 				</div>
 				<!-- Card footer -->
-				<div class="card-footer py-4">
+				<div class="card-footer">
 					<nav aria-label="...">
 						<ul class="pagination justify-content-end mb-0">
 							<li class="page-item disabled"><a class="page-link" href="#"
@@ -163,6 +164,7 @@
 		</div>
 	</footer>
 	
+	
 	<div id="modal-content-tambah">
 	</div>
 	
@@ -200,30 +202,29 @@
 			$("#modal-content-detail").load("modal_detail")
 
 			$("#sidenav-main").load("sidenav");
-			$("#topnav").load("topnav");
 
 			$("#logo").on("click", function(){
 				$.ajax({
 					url:'index',
 					datType: 'html',
 					success: function(result){
-						location.reload(url)
+						location.reload(url);
 					}
 				})
 			})
 			
 			$(".table #modal-detail").on('click', function() {
-				var kode_pelajaran = $(this).val();
+				var kode_kelas = $(this).val();
 				$.ajax({
 					type: 'get',
-					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
-					success: function (pelajaranModel){
+					url: 'api_getById?&kode_kelas='+kode_kelas,
+					success: function (kelasModel){
 						$("#modal-detail-data").modal("show");
-						$('#modal-detail-data #kode_pelajaran').text(": "+pelajaranModel.kode_pelajaran);
-						$('#modal-detail-data #nama_pelajaran').text(": "+pelajaranModel.nama_pelajaran);	
-						$('#modal-detail-data #jam_ajar_pelajaran').text(": "+pelajaranModel.jam_ajar_pelajaran);	
-						$('#modal-detail-data #tingkat_pelajaran').text(": "+pelajaranModel.tingkat_pelajaran);	
-						$('#modal-detail-data #keterangan_pelajaran').text(": "+pelajaranModel.keterangan_pelajaran);						
+						$('#modal-detail-data #kode_kelas').text(": "+kelasModel.kode_kelas);
+						$('#modal-detail-data #nama_kelas').text(": "+kelasModel.nama_kelas);		
+						$('#modal-detail-data #tingkat_kelas').text(": "+kelasModel.tingkat_kelas);
+						$('#modal-detail-data #wali_kelas').text(": "+kelasModel.wali_kelas);	
+						$('#modal-detail-data #ruang_kelas').text(": "+kelasModel.ruang_kelas);			
 					}
 				})
 			})
@@ -237,23 +238,23 @@
 			})
 			
 			$(".table #modal-hapus").on("click", function(){
-				var kode_pelajaran = $(this).val();
+				var kode_kelas = $(this).val();
 				$("#modal-hapus-data").modal("show");
-				$("#modal-hapus-data #hapus").val(kode_pelajaran);
+				$("#modal-hapus-data #hapus").val(kode_kelas);
 			})
 			
 			$(".table #modal-edit").on("click", function(){
-				var kode_pelajaran = $(this).val();
+				var kode_kelas = $(this).val();
 				$.ajax({
 					type: 'get',
-					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
-					success: function (pelajaranModel){
+					url: 'api_getById?kode_kelas='+kode_kelas,
+					success: function (kelasModel){
 						$("#modal-edit-data").modal("show");
-						$('#modal-edit-data #kode_pelajaran').val(pelajaranModel.kode_pelajaran);
-						$('#modal-edit-data #nama_pelajaran').val(pelajaranModel.nama_pelajaran);	
-						$('#modal-edit-data #jam_ajar_pelajaran').val(pelajaranModel.jam_ajar_pelajaran);	
-						$('#modal-edit-data #tingkat_pelajaran').val(pelajaranModel.tingkat_pelajaran);	
-						$('#modal-edit-data #keterangan_pelajaran').val(pelajaranModel.keterangan_pelajaran);						
+						$('#modal-edit-data #kode_kelas').val(kelasModel.kode_kelas);
+						$('#modal-edit-data #nama_kelas').val(kelasModel.nama_kelas);		
+						$('#modal-edit-data #tingkat_kelas').val(kelasModel.tingkat_kelas);	
+						$('#modal-edit-data #wali_kelas').val(kelasModel.wali_kelas);	
+						$('#modal-edit-data #ruang_kelas').val(kelasModel.ruang_kelas);
 					}
 				})
 			})
