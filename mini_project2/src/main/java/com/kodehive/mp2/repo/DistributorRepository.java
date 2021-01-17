@@ -8,7 +8,7 @@ import com.kodehive.mp2.model.DistributorModel;
 
 
 
-public interface DistributorRepository extends JpaRepository<DistributorRepository, String>{ 
+public interface DistributorRepository extends JpaRepository<DistributorModel, String>{ 
 
 	
 	@Query("SELECT D FROM DistributorModel D WHERE D.kdDistributor = ?1")
