@@ -1,5 +1,6 @@
 package com.kodehive.mp2.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -64,6 +65,5 @@ public class PelajaranModel {
 	public void setKeterangan_pelajaran(String keterangan_pelajaran) {
 		this.keterangan_pelajaran = keterangan_pelajaran;
 	}
-	
 	
 }

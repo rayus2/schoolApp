@@ -10,8 +10,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.projectb2.model.DistributorModel;
-import com.project.projectb2.repository.DistributorRepository;
+import com.kodehive.mp2.model.DistributorModel;
+import com.kodehive.mp2.repo.DistributorRepository;
+
 
 
 @Service

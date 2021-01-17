@@ -10,9 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kodehive.mp2.model.DistributorModel;
+import com.kodehive.mp2.service.DistributorService;
 
-import com.project.projectb2.model.DistributorModel;
-import com.project.projectb2.service.DistributorService;
+
 
 
 @Controller

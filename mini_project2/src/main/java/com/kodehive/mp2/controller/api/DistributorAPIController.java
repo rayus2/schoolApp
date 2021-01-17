@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.kodehive.mp2.model.DistributorModel;
+import com.kodehive.mp2.service.DistributorService;
 
-import com.project.projectb2.model.DistributorModel;
-import com.project.projectb2.service.DistributorService;
+
 
 
 public class DistributorAPIController {

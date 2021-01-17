@@ -1,5 +1,6 @@
 package com.kodehive.mp2.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -76,6 +77,4 @@ public class GuruModel {
 		this.alamat_guru = alamat_guru;
 	}
 	
-	
-
 }
