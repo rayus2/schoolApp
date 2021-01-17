@@ -1,154 +1,52 @@
 <!-- Modal -->
 <div class="row">
 	<div class="col-md-4">
-		<div class="modal fade" id="modal-detail-data" tabindex="-1" role="dialog"
-			aria-labelledby="modal-edit" aria-hidden="true">
-			<div class="modal-dialog modal- modal-dialog-centered modal-lg"
-				role="document">
-				<div class="modal-content">
-					<div class="modal-body p-0">
-						<div class="card bg-secondary border-0 mb-0">
-							<div class="card-header bg-transparent ">
-								<div class="text-center text-muted">Detail Data Siswa</div>
-							</div>
-
-							<div class="card-body">
-								<form class="col-lg">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">NIM</span>
-													</div>
-													<input class="form-control" type="text" id="nim_siswa" name="nim_siswa">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Nama</span>
-													</div>
-													<input class="form-control" type="text" id="nama_siswa" name="nama_siswa">
-												</div>
-											</div>
-											<div class="form-group mb-3">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<div class="row pb-4 m-0">
-															<div class="row m-0">
-																<div class="input-group-text">Gender</div>
-															</div>
-															
-														</div>
-														<div class="row m-0">
-															<div class="form-group m-0">
-																<div class="input-group">
-																	<div class="input-group-prepend">
-																		<div class="input-group-text">
-																			<input type="radio" id="gender_siswa" name="gender_siswa" value="Pria">
-																		</div>
-																	</div>
-																	<input type="text" class="form-control" value="Pria"
-																		readonly>
-																</div>
-															</div>
-															<div class="form-group">
-																<div class="input-group">
-																	<div class="input-group-prepend">
-																		<div class="input-group-text">
-																			<input type="radio" id="gender_siswa" name="gender_siswa" value="Wanita">
-																		</div>
-																	</div>
-																	<input type="text" class="form-control" value="Wanita"
-																		readonly>
-																</div>
-															</div>
-														</div>
-
-													</div>
-
-												</div>
-											</div>
-
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Tanggal Lahir</i></span>
-													</div>
-													<input class="form-control" type="date" id="tglLahir_siswa" name="tglLahir_siswa">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Tempat Lahir</i></span>
-													</div>
-													<input class="form-control" id="tempatLahir_siswa" name="tempatLahir_siswa"
-														type="text">
-												</div>
-											</div>
-										</div>
-
-										<div class="col-md-6">
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Nama Wali</span>
-													</div>
-													<input class="form-control" id="wali_siswa" name="wali_siswa"
-														type="text">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Pekerjaan Wali</span>
-													</div>
-													<input class="form-control" id="pekerjaan_wali_siswa" name="pekerjaan_wali_siswa" type="text">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">No.Telp Wali</span>
-													</div>
-													<input class="form-control" id="telp_wali_siswa" name="telp_wali_siswa" type="text">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Alamat</span>
-													</div>
-													<textarea class="form-control" rows="4" id="alamat_siswa" name="alamat_siswa"></textarea>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Kelas</span>
-													</div>
-													<input class="form-control" id="kelas_siswa" name="kelassiswa" type="text">
-												</div>
-											</div>
-										</div>
-
-									</div>
-
-									<div class="text-center">
-										<button type="button" class="btn btn-info"
-											data-dismiss="modal">Kembali ke Daftar Siswa</button>
-									</div>
-								</form>
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
+      <div class="modal fade" id="modal-detail-data" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+	    <div class="modal-dialog modal-info modal-dialog-centered modal-" role="document">
+	        <div class="modal-content bg-gradient-primary">
+	        	
+	            <div class="modal-header">
+	                <h3 class="modal-title" id="modal-title-notification">Detail Data Siswa</h3>
+	            </div>
+	            
+	            <div class="modal-body">
+	            	<div class="row">
+	                <div class="col-md-5">
+	                    <h4 class="text-white">NIM </h4>
+	                    <h4 class="text-white">Nama </h4>
+	                    <h4 class="text-white">Gender </h4>
+	                    <h4 class="text-white">Tanggal Lahir </h4>
+	                    <h4 class="text-white">Tempat Lahir </h4>
+	                    <h4 class="text-white">Wali Siswa</h4>
+	                    <h4 class="text-white">Pekerjaan Wali</h4>
+	                    <h4 class="text-white">No.Telp Wali</h4>
+	                    <h4 class="text-white">Alamat </h4>
+	                    <h4 class="text-white">Kelas </h4>
+	                
+	                </div>
+	                <div class="col-md-6">
+	                    <h4 class="text-white" id="nim_siswa"></h4>
+	                    <h4 class="text-white" id="nama_siswa"></h4>
+	                    <h4 class="text-white" id="gender_siswa"></h4>
+	                    <h4 class="text-white" id="tglLahir_siswa"></h4>
+	                    <h4 class="text-white" id="tempatLahir_siswa"></h4>
+	                    <h4 class="text-white" id="wali_siswa"></h4>
+	                    <h4 class="text-white" id="pekerjaan_wali_siswa"></h4>
+	                    <h4 class="text-white" id="telp_wali_siswa"></h4>
+	                    <h4 class="text-white" id="alamat_siswa"></h4>
+	                    <h4 class="text-white" id="kelas_siswa"></h4>
+	                	
+	                </div>
+	                </div>
+	            </div>
+	            
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary ml-auto" data-dismiss="modal">Kembali Ke Daftar Pelajaran</button>
+	            </div>
+	            
+	        </div>
+	    </div>
 	</div>
+
+  </div>
 </div>

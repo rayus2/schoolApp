@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="row">
 	<div class="col-md-4">
-		<div class="modal fade" id="modal-detail-data" tabindex="-1" role="dialog"
+		<div class="modal fade" id="modal-edit-data" tabindex="-1" role="dialog"
 			aria-labelledby="modal-edit" aria-hidden="true">
 			<div class="modal-dialog modal- modal-dialog-centered modal-lg"
 				role="document">
@@ -9,11 +9,11 @@
 					<div class="modal-body p-0">
 						<div class="card bg-secondary border-0 mb-0">
 							<div class="card-header bg-transparent ">
-								<div class="text-center text-muted">Detail Data Siswa</div>
+								<div class="text-center text-muted">Form Edit Siswa</div>
 							</div>
 
 							<div class="card-body">
-								<form class="col-lg">
+								<form class="col-lg" th:action="@{save_edit}">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
@@ -76,7 +76,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Tanggal Lahir</i></span>
 													</div>
-													<input class="form-control" type="date" id="tglLahir_siswa" name="tglLahir_siswa">
+													<input class="form-control" type="date" id="tgllahir_siswa" name="tgllahir_siswa">
 												</div>
 											</div>
 											<div class="form-group">
@@ -84,7 +84,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Tempat Lahir</i></span>
 													</div>
-													<input class="form-control" id="tempatLahir_siswa" name="tempatLahir_siswa"
+													<input class="form-control" id="tempatlahir_siswa" name="tempatlahir_siswa"
 														type="text">
 												</div>
 											</div>
@@ -129,7 +129,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Kelas</span>
 													</div>
-													<input class="form-control" id="kelas_siswa" name="kelassiswa" type="text">
+													<input class="form-control" id="kelas_siswa" name="kelas_siswa" type="text">
 												</div>
 											</div>
 										</div>
@@ -137,8 +137,9 @@
 									</div>
 
 									<div class="text-center">
-										<button type="button" class="btn btn-info"
-											data-dismiss="modal">Kembali ke Daftar Siswa</button>
+										<button type="submit" class="btn btn-success my-4">Simpan</button>
+										<button type="button" class="btn btn-danger"
+											data-dismiss="modal">Batal</button>
 									</div>
 								</form>
 

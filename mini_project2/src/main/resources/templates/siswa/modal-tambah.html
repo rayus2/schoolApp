@@ -13,7 +13,7 @@
 							</div>
 
 							<div class="card-body">
-								<form class="col-lg">
+								<form class="col-lg" th:action="@{tambah_data}">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
@@ -21,8 +21,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">NIM</span>
 													</div>
-													<input class="form-control" placeholder="Contoh : NIM999"
-														type="text">
+													<input class="form-control" type="text" id="nim_siswa" name="nim_siswa">
 												</div>
 											</div>
 											<div class="form-group">
@@ -30,8 +29,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Nama</span>
 													</div>
-													<input class="form-control"
-														placeholder="Contoh : Budi Badi" type="text">
+													<input class="form-control" type="text" id="nama_siswa" name="nama_siswa">
 												</div>
 											</div>
 											<div class="form-group mb-3">
@@ -48,7 +46,7 @@
 																<div class="input-group">
 																	<div class="input-group-prepend">
 																		<div class="input-group-text">
-																			<input type="radio">
+																			<input type="radio" id="gender_siswa" name="gender_siswa" value="Pria">
 																		</div>
 																	</div>
 																	<input type="text" class="form-control" value="Pria"
@@ -59,7 +57,7 @@
 																<div class="input-group">
 																	<div class="input-group-prepend">
 																		<div class="input-group-text">
-																			<input type="radio">
+																			<input type="radio" id="gender_siswa" name="gender_siswa" value="Wanita">
 																		</div>
 																	</div>
 																	<input type="text" class="form-control" value="Wanita"
@@ -78,7 +76,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Tanggal Lahir</i></span>
 													</div>
-													<input class="form-control" type="date">
+													<input class="form-control" type="date" id="tgllahir_siswa" name="tgllahir_siswa">
 												</div>
 											</div>
 											<div class="form-group">
@@ -86,7 +84,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Tempat Lahir</i></span>
 													</div>
-													<input class="form-control" placeholder="Contoh : Bandung"
+													<input class="form-control" id="tempatlahir_siswa" name="tempatlahir_siswa"
 														type="text">
 												</div>
 											</div>
@@ -98,7 +96,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Nama Wali</span>
 													</div>
-													<input class="form-control" placeholder="Contoh : Ibu Budi"
+													<input class="form-control" id="wali_siswa" name="wali_siswa"
 														type="text">
 												</div>
 											</div>
@@ -107,8 +105,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Pekerjaan Wali</span>
 													</div>
-													<input class="form-control"
-														placeholder="Contoh : Ibu Rumah Tangga" type="text">
+													<input class="form-control" id="pekerjaan_wali_siswa" name="pekerjaan_wali_siswa" type="text">
 												</div>
 											</div>
 											<div class="form-group">
@@ -116,8 +113,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">No.Telp Wali</span>
 													</div>
-													<input class="form-control"
-														placeholder="Contoh : 0890000000" type="text">
+													<input class="form-control" id="telp_wali_siswa" name="telp_wali_siswa" type="text">
 												</div>
 											</div>
 											<div class="form-group">
@@ -125,8 +121,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Alamat</span>
 													</div>
-													<textarea class="form-control" rows="4"
-														placeholder="Contoh : Jl.siswa No.2" ></textarea>
+													<textarea class="form-control" rows="4" id="alamat_siswa" name="alamat_siswa"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -134,8 +129,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text">Kelas</span>
 													</div>
-													<input class="form-control" placeholder="Contoh : 12-IPA-1"
-														type="text">
+													<input class="form-control" id="kelas_siswa" name="kelas_siswa" type="text">
 												</div>
 											</div>
 										</div>
@@ -143,10 +137,9 @@
 									</div>
 
 									<div class="text-center">
-										<button type="button" class="btn btn-success my-4">Simpan</button>
+										<button type="submit" class="btn btn-success my-4">Simpan</button>
 										<button type="button" class="btn btn-danger"
 											data-dismiss="modal">Batal</button>
-										
 									</div>
 								</form>
 

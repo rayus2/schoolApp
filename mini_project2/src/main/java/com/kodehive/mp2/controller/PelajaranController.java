@@ -40,7 +40,7 @@ public class PelajaranController {
 	}
 	
 	@RequestMapping("pelajaran/fe_list")
-	public String fe_list(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+	public String fe_list(Model model, @PageableDefault(page=0, value = 4) Pageable pageable) {
 		
 		Page<PelajaranModel> pelajaranModelList = pelajaranService.listPelajaran(pageable);
 		model.addAttribute("pelajaranModelList", pelajaranModelList);
@@ -84,7 +84,7 @@ public class PelajaranController {
 	}
 	
 	@RequestMapping("/pelajaran/list")
-	public String list_pelajaran(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+	public String list_pelajaran(Model model, @PageableDefault(page=0, value = 4) Pageable pageable) {
 		
 		Page<PelajaranModel> pelajaranModelList = pelajaranService.listPelajaran(pageable);
 		model.addAttribute("pelajaranModelList", pelajaranModelList);
@@ -154,7 +154,7 @@ public class PelajaranController {
 		
 		model.addAttribute("pelajaranModel", pelajaranModel);
 	
-		return "redirect:/pelajaran/fe_list/";
+		return "redirect:/pelajaran/fe_list";
 	}
 	
 	@RequestMapping("/pelajaran/delete_data")

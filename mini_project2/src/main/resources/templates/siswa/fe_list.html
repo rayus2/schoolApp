@@ -108,16 +108,16 @@
 								<td th:text = ${siswaModel.nama_siswa}></td>
 								<td th:text = ${siswaModel.kelas_siswa}></td>
 								
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" id="modal-edit" th:href = @{/siswa/edit_data?(siswaID=${siswaModel.nim_siswa})}> Edit </button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" id="modal-hapus" th:href = @{/siswa/delete_data?(siswaID=${siswaModel.nim_siswa})}>Delete</button></td>
-								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" id="modal-detail" th:href = @{/siswa/modal_detail?(siswaID=${siswaModel.nim_siswa})}>Detail</button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-info" id="modal-edit" th:value=${siswaModel.nim_siswa}> Edit </button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-danger" id="modal-hapus" th:value=${siswaModel.nim_siswa}>Delete</button></td>
+								<td class="pl-0 pr-0"><button type="button" class="btn btn-primary" id="modal-detail" th:value=${siswaModel.nim_siswa}>Detail</button></td>
 							</tr>
 
 						</tbody>
 					</table>
 				</div>
 				<!-- Card footer -->
-				<div class="card-footer py-4">
+				<div class="card-footer">
 					<nav aria-label="...">
 						<ul class="pagination justify-content-end mb-0">
 							<li class="page-item disabled"><a class="page-link" href="#"
@@ -202,7 +202,6 @@
 			$("#modal-content-detail").load("modal_detail")
 
 			$("#sidenav-main").load("sidenav");
-			$("#topnav").load("topnav");
 
 			$("#logo").on("click", function(){
 				$.ajax({
@@ -215,17 +214,22 @@
 			})
 			
 			$(".table #modal-detail").on('click', function() {
-				var kode_pelajaran = $(this).val();
+				var nim_siswa = $(this).val();
 				$.ajax({
 					type: 'get',
-					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
-					success: function (pelajaranModel){
+					url: 'api_getById?&nim_siswa='+nim_siswa,
+					success: function (siswaModel){
 						$("#modal-detail-data").modal("show");
-						$('#modal-detail-data #kode_pelajaran').text(": "+pelajaranModel.kode_pelajaran);
-						$('#modal-detail-data #nama_pelajaran').text(": "+pelajaranModel.nama_pelajaran);	
-						$('#modal-detail-data #jam_ajar_pelajaran').text(": "+pelajaranModel.jam_ajar_pelajaran);	
-						$('#modal-detail-data #tingkat_pelajaran').text(": "+pelajaranModel.tingkat_pelajaran);	
-						$('#modal-detail-data #keterangan_pelajaran').text(": "+pelajaranModel.keterangan_pelajaran);						
+						$('#modal-detail-data #nim_siswa').text(": "+siswaModel.nim_siswa);
+						$('#modal-detail-data #nama_siswa').text(": "+siswaModel.nama_siswa);		
+						$('#modal-detail-data #gender_siswa').text(": "+siswaModel.gender_siswa);
+						$('#modal-detail-data #tglLahir_siswa').text(": "+siswaModel.tgllahir_siswa);	
+						$('#modal-detail-data #tempatLahir_siswa').text(": "+siswaModel.tempatlahir_siswa);	
+						$('#modal-detail-data #wali_siswa').text(": "+siswaModel.wali_siswa);	
+						$('#modal-detail-data #pekerjaan_wali_siswa').text(": "+siswaModel.pekerjaan_wali_siswa);	
+						$('#modal-detail-data #telp_wali_siswa').text(": "+siswaModel.telp_wali_siswa);	
+						$('#modal-detail-data #alamat_siswa').text(": "+siswaModel.alamat_siswa);	
+						$('#modal-detail-data #kelas_siswa').text(": "+siswaModel.kelas_siswa);							
 					}
 				})
 			})
@@ -239,23 +243,27 @@
 			})
 			
 			$(".table #modal-hapus").on("click", function(){
-				var kode_pelajaran = $(this).val();
+				var nim_siswa = $(this).val();
 				$("#modal-hapus-data").modal("show");
-				$("#modal-hapus-data #hapus").val(kode_pelajaran);
+				$("#modal-hapus-data #hapus").val(nim_siswa);
 			})
 			
 			$(".table #modal-edit").on("click", function(){
-				var kode_pelajaran = $(this).val();
+				var nim_siswa = $(this).val();
 				$.ajax({
 					type: 'get',
-					url: 'api_getById?&kode_pelajaran='+kode_pelajaran,
-					success: function (pelajaranModel){
+					url: 'api_getById?nim_siswa='+nim_siswa,
+					success: function (siswaModel){
 						$("#modal-edit-data").modal("show");
-						$('#modal-edit-data #kode_pelajaran').val(pelajaranModel.kode_pelajaran);
-						$('#modal-edit-data #nama_pelajaran').val(pelajaranModel.nama_pelajaran);	
-						$('#modal-edit-data #jam_ajar_pelajaran').val(pelajaranModel.jam_ajar_pelajaran);	
-						$('#modal-edit-data #tingkat_pelajaran').val(pelajaranModel.tingkat_pelajaran);	
-						$('#modal-edit-data #keterangan_pelajaran').val(pelajaranModel.keterangan_pelajaran);						
+						$('#modal-edit-data #nim_siswa').val(siswaModel.nim_siswa);
+						$('#modal-edit-data #nama_siswa').val(siswaModel.nama_siswa);		
+						$('#modal-edit-data #tgllahir_siswa').val(siswaModel.tgllahir_siswa);	
+						$('#modal-edit-data #tempatlahir_siswa').val(siswaModel.tempatlahir_siswa);	
+						$('#modal-edit-data #wali_siswa').val(siswaModel.wali_siswa);	
+						$('#modal-edit-data #pekerjaan_wali_siswa').val(siswaModel.pekerjaan_wali_siswa);	
+						$('#modal-edit-data #telp_wali_siswa').val(siswaModel.telp_wali_siswa);	
+						$('#modal-edit-data #alamat_siswa').val(siswaModel.alamat_siswa);	
+						$('#modal-edit-data #kelas_siswa').val(siswaModel.kelas_siswa);
 					}
 				})
 			})
