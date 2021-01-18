@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Detail Distributor</title>
+	</head>
+
+	<body>
+		<h3>Detail Distributor</h3>
+		<form>
+			<table>
+				<tr>
+					<td><label name="kdDistributor">Kode Distributor</label></td>
+					<td><input name="kdDistributor" th:value="${distributorModel.kdDistributor}"/></td>
+				</tr>
+				<tr>
+					<td><label name="namaDistributor">Nama Distributor</label></td>
+					<td><input name="namaDistributor" th:value="${distributorModel.namaDistributor}"/></td>
+				</tr>
+				<tr>
+					<td><label name="tipeDistributor">Tipe Distributor</label></td>
+					<td><input name="tipeDistributor" th:value="${distributorModel.tipeDistributor}"/></td>
+				</tr>
+				<tr>
+					<td><label name="telepon">Telepon</label></td>
+					<td><input name="telepon" th:value="${distributorModel.telepon}"/></td>
+				</tr>
+				<tr>
+					<td><label name="alamat">Alamat</label></td>
+					<td><input name="alamat" th:value="${distributorModel.alamat}"/></td>
+				</tr>
+				<tr>
+                    <td/>
+                    <td>
+                    	<a th:href = "@{/distributor/list}">Ke list</a>
+                    </td>
+                </tr>
+			</table>
+		</form>
+	</body>
+</html>  
