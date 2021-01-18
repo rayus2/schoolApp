@@ -1,14 +1,11 @@
+
 package com.kodehive.mp2.service;
 
-import java.util.List;
-
-
-
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kodehive.mp2.model.DistributorModel;
 import com.kodehive.mp2.repo.DistributorRepository;
@@ -19,29 +16,35 @@ import com.kodehive.mp2.repo.DistributorRepository;
 @Transactional
 public class DistributorService { 
 
-	// Depencies Injection mempermudah metode 
-	@Autowired
-	private DistributorRepository distriRepository;
-	
-	public List<DistributorModel> temukan2() {
-		return distriRepository.findAll();
-	}
-	
-	public void distriSave(DistributorModel distributorModel) {
-		distriRepository.save(distributorModel);
-	}
-	
-	public DistributorModel distriUpdate(DistributorModel distributorModel) {
-		 return distriRepository.save(distributorModel);
-	}
 
-	public void distriHapus(String kdDistributor) {
-		distriRepository.deleteById(kdDistributor);
+	@Autowired
+	private DistributorRepository distriRepo;
+	
+	public Page<DistributorModel> listDistributor(Pageable pageable){
+		return distriRepo.findAll(pageable);
 	}
 	
-	public DistributorModel distriID(String idDistributor) {
-		return distriRepository.noDistributor(idDistributor);
+	public DistributorModel getId(String kd_distributor) {
+		return this.distriRepo.getId(kd_distributor);
+	}
+	
+	public void tambah_data(DistributorModel distributorModel) {
+		distriRepo.save(distributorModel);
+	}
+	
+	public void save_edit(DistributorModel distributorModel) {
+		distriRepo.save(distributorModel);
+	}
+	
+	public DistributorModel detail_data(String kd_distributor) {
+		return distriRepo.getId(kd_distributor);
+	}
+	
+	public void delete_data(String kd_distributor) {
+		distriRepo.deleteById(kd_distributor);
 	}
 	
 
 } 
+
+
