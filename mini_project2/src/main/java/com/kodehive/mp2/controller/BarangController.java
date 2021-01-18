@@ -48,7 +48,7 @@ public class BarangController {
 	
 	@RequestMapping("barang/modal_edit")
 	public String modal_edit() {
-		return "barang/modal-edit;
+		return "barang/modal-edit";
 	}
 	
 	@RequestMapping("barang/modal_hapus")
