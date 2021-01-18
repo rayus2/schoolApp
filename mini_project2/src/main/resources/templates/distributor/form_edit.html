@@ -2,32 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Form Edit Siswa</title>
+		<title>Form Edit Distributor</title>
 	</head>
 
 	<body>
-		<h3>Formulir Edit Siswa</h3>
-		<form method="post" th:action="@{/pelajaran/save_edit}">
+		<h3>Formulir Edit Distributor</h3>
+		<form method="post" th:action="@{/distributor/save_edit}">
 			<table>
 				<tr>
-					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
-					<td><input name="kode_pelajaran" th:value="${pelajaranModel.kode_pelajaran}" readonly/></td>
+					<td><label name="kdDistributor">Kode Distributor</label></td>
+					<td><input name="kdDistributor" th:value="${distributorModel.kdDistributor}" readonly/></td>
 				</tr>
 				<tr>
-					<td><label name="nama_pelajaran">Nama Pelajaran</label></td>
-					<td><input name="nama_pelajaran" th:value="${pelajaranModel.nama_pelajaran}"/></td>
+					<td><label name="namaDistributor">Nama Distributor</label></td>
+					<td><input name="namaDistributor" th:value="${distributornModel.namaDistributor}"/></td>
 				</tr>
 				<tr>
-					<td><label name="jam_ajar_pelajaran">Jam Ajar Pelajaran</label></td>
-					<td><input name="jam_ajar_pelajaran" th:value="${pelajaranModel.jam_ajar_pelajaran}"/></td>
+					<td><label name="tipeDistributor">Tipe Distributor</label></td>
+					<td><input name="tipeDistributor" th:value="${distributornModel.tipeDistributor}"/></td>
 				</tr>
 				<tr>
-					<td><label name="tingkat_pelajaran">Tingkat Pelajaran</label></td>
-					<td><input name="tingkat_pelajaran" th:value="${pelajaranModel.tingkat_pelajaran}"/></td>
+					<td><label name="telepon">Telepon</label></td>
+					<td><input name="telepon" th:value="${distributorModel.telepon}"/></td>
 				</tr>
 				<tr>
-					<td><label name="keterangan_pelajaran">Keternagan Pelajaran</label></td>
-					<td><input name="keterangan_pelajaran" th:value="${pelajaranModel.keterangan_pelajaran}"/></td>
+					<td><label name="alamat">Alamat</label></td>
+					<td><input name="alamat" th:value="${distributorModel.Alamat}"/></td>
 				</tr>
 				<tr>
                     <td/>

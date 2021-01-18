@@ -2,38 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Form Tambah Siswa</title>
+		<title>Form Tambah Distributor</title>
 	</head>
 
 	<body>
-		<h3>Formulir Siswa</h3>
-		<form method="post" th:action="@{/pelajaran/tambah_data}">
+		<h3>Formulir Distributor</h3>
+		<form method="post" th:action="@{/distributor/tambah_data}">
 			<table>
 				<tr>
-					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
-					<td><input name="kode_pelajaran" /></td>
+					<td><label name="kdDistributor">Kode Distributor</label></td>
+					<td><input name="kdDistributor" /></td>
 				</tr>
 				<tr>
-					<td><label name="nama_pelajaran">Nama Pelajaran</label></td>
-					<td><input name="nama_pelajaran" /></td>
+					<td><label name="namaDistributor">Nama Distributor</label></td>
+					<td><input name="namaDistributor" /></td>
 				</tr>
 				<tr>
-					<td><label name="jam_ajar_pelajaran">Jam Ajar Pelajaran</label></td>
-					<td><input name="jam_ajar_pelajaran" /></td>
-				</tr>
-				<tr>
-					<td><label name="tingkat_pelajaran">Tingkat Pelajaran</label></td>
+					<td><label name="tipeDistributor">Tipe Distributor</label></td>
 					<td>
-						<select name="tingkat_pelajaran"/>
+						<select name="tipeDistributor"/>
 							<option value="-" label="--Pilih--"/>
-							<option value="10" label="10"/>
-							<option value="11" label="11"/>
-							<option value="12" label="12"/>
+							<option value="pt" label="PT"/>
+							<option value="cv" label="CV"/>
+							<option value="individu" label="Individu"/>
 					</td>
 				</tr>
+			
 				<tr>
-					<td><label name="keterangan_pelajaran">Keterangan Pelajaran</label></td>
-					<td><input name="keterangan_pelajaran" /></td>
+					<td><label name="telepon">Telepon</label></td>
+					<td><input name="telepon" /></td>
+				</tr>
+				<tr>
+					<td><label name="alamat">Alamat</label></td>
+					<td><input name="alamat" /></td>
 				</tr>
 				<tr>
                     <td>

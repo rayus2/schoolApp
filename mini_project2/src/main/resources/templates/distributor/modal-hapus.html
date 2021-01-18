@@ -33,10 +33,10 @@
 
 <script>
 $("#hapus").on("click", function(){
-	var kode_pelajaran = $(this).val();
+	var kdDistributor = $(this).val();
 	$.ajax({
 		type: 'delete',
-		url: 'api_delete?kode_pelajaran='+kode_pelajaran,
+		url: 'api_delete?kdDistributor='+kdDistributor,
 		success: function(result){
 			location.reload();
 		}
