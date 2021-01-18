@@ -1,89 +1,79 @@
 package com.kodehive.mp2.controller.api;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kodehive.mp2.model.DistributorModel;
 import com.kodehive.mp2.service.DistributorService;
 
-
-
-
-public class DistributorAPIController {
-	
-	/*
-	 *       API   | CRUD   | QUERY 
-	 * -------------------------------- 
-	 *      POST   | CREATE | INSERT
-	 *      GET    | READ   | SELECT
-	 *      PUT    | UPDATE | UPDATE
-	 *      DELETE | DELETE | DROP
-	 *      
-	 *      
-	 */
+@RestController
+public class DistributorApiController {
 	
 	@Autowired
 	private DistributorService distriService;
 	
-
-	
-	@PostMapping("/post")
-	public Map<String, Object> postApi(@RequestBody DistributorModel distriModel) {  //K untuk Key, V untuk Value
+	@PostMapping("/distributor/api_post")
+	public Map<String, Object> post_distributor(@RequestBody DistributorModel distributorModel) {  //K untuk Key, V untuk Value
 		
-		this.distriService.distriSave(distriModel);
-		
+		this.distriService.tambah_data(distributorModel);
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		map.put("success", Boolean.TRUE);
-		map.put("pesan","data distributor berhasil dimasukkan");
+		map.put("pesan","data distributor berhasil ditambahkan");
 		
 		return map;
 	}  
 	
-	@GetMapping("/getAll")
-	@ResponseStatus(code = HttpStatus.OK)
-	public List<DistributorModel> getApi(){
+	@GetMapping("/distributor/api_get")
+	public Page<DistributorModel> getAll_distributor(Pageable pageable){
 		
-		List<DistributorModel> distriListModel = new ArrayList<DistributorModel>();
-		distriListModel = this.distriService.temukan2();
-
-		return distriListModel;
+		 Page<DistributorModel> distributorModelList = this.distriService.listDistributor(pageable);
+		
+		return distributorModelList;
 	}
 	
-	@PutMapping("/put")
-	public Map<String, Object> putApi(@RequestBody DistributorModel distriModel) {
+	@GetMapping("/distributor/api_getById")
+	public DistributorModel getById_distributor(@RequestParam String kdDistributor){
 		
-		this.distriService.distriUpdate(distriModel);
+		DistributorModel distributorModel = new DistributorModel();
+		distributorModel = this.distriService.detail_data(kdDistributor);
 		
+		return distributorModel;
+	}
+	
+	@PutMapping("/distributor/api_put")
+	public Map<String, Object> put_distributor(@RequestBody DistributorModel distributorModel){
+		
+		this.distriService.save_edit(distributorModel);
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		map.put("success", Boolean.TRUE);
-		map.put("pesan", "data distributor berhasil diperbarui");
+		map.put("pesan", "data distributor berhasil di update");
 		
 		return map;
 	}
 	
-	// Delete
-	@DeleteMapping("/delete")
-	public Map<String, Object> deleteapi2(@RequestBody String idDistributor){
-
-		this.distriService.distriHapus(idDistributor);
+	@DeleteMapping("/distributor/api_delete")
+	public Map<String, Object> delete_distributor(@RequestParam String kdDistributor) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.remove("succes", Boolean.TRUE);
-		map.remove("pesan", "data distributor telah dihapus");
+		
+		this.distriService.delete_data(kdDistributor);
+		map.put("success", Boolean.TRUE);
+		map.put("pesan", "data distributor berhasil di hapus");
 		
 		return map;
-		
 	}
 
 }
