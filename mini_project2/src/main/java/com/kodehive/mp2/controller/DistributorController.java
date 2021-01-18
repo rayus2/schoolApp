@@ -121,7 +121,7 @@ public class DistributorController {
 		DistributorModel distributorModel = new DistributorModel();
 		distributorModel = this.distriService.getId(distributorID);
 		
-		model.addAttribute("distributorModel", distributorModel);
+		model.addAttribute("pelajaranModel", distributorModel);
 		
 		return "/distributor/form_edit";
 	}
