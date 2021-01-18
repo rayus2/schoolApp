@@ -22,15 +22,6 @@ public class DistributorController {
 	@Autowired
 	private DistributorService distriService;
 	
-	@RequestMapping("/sidenav")
-	public String sidenav() {
-		return "/components/sidenav";
-	}
-	
-	@RequestMapping("/topnav")
-	public String topnav() {
-		return "/components/topnav";
-	}
 	
 	@RequestMapping("distributor/sidenav")
 	public String p_sidenav() {
@@ -121,7 +112,7 @@ public class DistributorController {
 		DistributorModel distributorModel = new DistributorModel();
 		distributorModel = this.distriService.getId(distributorID);
 		
-		model.addAttribute("pelajaranModel", distributorModel);
+		model.addAttribute("distributorModel", distributorModel);
 		
 		return "/distributor/form_edit";
 	}
