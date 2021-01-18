@@ -2,38 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Form Tambah Siswa</title>
+		<title>Form Tambah Barang</title>
 	</head>
 
 	<body>
-		<h3>Formulir Siswa</h3>
-		<form method="post" th:action="@{/pelajaran/tambah_data}">
+		<h3>Formulir Barang</h3>
+		<form method="post" th:action="@{/barang/tambah_data}">
 			<table>
 				<tr>
-					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
-					<td><input name="kode_pelajaran" /></td>
+					<td><label name="kdBarang">Kode Barang</label></td>
+					<td><input name="kdBarang" th:value="${barangModel.kdBarang}"/></td>
 				</tr>
 				<tr>
-					<td><label name="nama_pelajaran">Nama Pelajaran</label></td>
-					<td><input name="nama_pelajaran" /></td>
+					<td><label name="namaBarang">Nama Barang</label></td>
+					<td><input name="namaBarang" th:value="${barangModel.namaBarang}"/></td>
 				</tr>
 				<tr>
-					<td><label name="jam_ajar_pelajaran">Jam Ajar Pelajaran</label></td>
-					<td><input name="jam_ajar_pelajaran" /></td>
+					<td><label name="satuan">Satuan</label></td>
+					<td><input name="satuan" th:value="${barangModel.satuan}"/></td>
 				</tr>
 				<tr>
-					<td><label name="tingkat_pelajaran">Tingkat Pelajaran</label></td>
-					<td>
-						<select name="tingkat_pelajaran"/>
-							<option value="-" label="--Pilih--"/>
-							<option value="10" label="10"/>
-							<option value="11" label="11"/>
-							<option value="12" label="12"/>
-					</td>
+					<td><label name="hargaSiswa">Harga Siswa</label></td>
+					<td><input name="hargaSiswa" th:value="${barangModel.hargaSiswa}"/></td>
 				</tr>
 				<tr>
-					<td><label name="keterangan_pelajaran">Keterangan Pelajaran</label></td>
-					<td><input name="keterangan_pelajaran" /></td>
+					<td><label name="keterangan">Keterangan</label></td>
+					<td><input name="keterangan" th:value="${barangModel.keterangan}"/></td>
 				</tr>
 				<tr>
                     <td>

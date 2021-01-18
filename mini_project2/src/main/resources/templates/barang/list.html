@@ -3,35 +3,31 @@
 	
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Data Pelajaran</title>
+		<title>Data Barang</title>
 	</head>
 	
 	<body>
 		
-		<h1>Tabel Pelajaran</h1>
+		<h1>Tabel Barang</h1>
 		
 		<table border="1">
 			<thead>
-				<th>Kode Pelajaran</th>
-				<th>Nama Pelajaran</th>
-				<th>Jam Ajar Pelajaran</th>
-				<th>Tingkat Pelajaran</th>
-				<th>Keterangan Pelajaran</th>
+				<th>Kode Barang</th>
+				<th>Nama Barang</th>
+				<th>Satuan</th>
 				<th th:colspan=3>Action</th>
 				
 			</thead>
 			
 			<tbody>
-				<tr th:each="pelajaranModel:${pelajaranModelList}">
+				<tr th:each="barangModel:${barangModelList}">
 				
-					<td><a th:text = ${pelajaranModel.kode_pelajaran}></a></td>
-					<td><a th:text = ${pelajaranModel.nama_pelajaran}></a></td>
-					<td><a th:text = ${pelajaranModel.jam_ajar_pelajaran}></a></td>
-					<td><a th:text = ${pelajaranModel.tingkat_pelajaran}></a></td>
-					<td><a th:text = ${pelajaranModel.keterangan_pelajaran}></a></td>
-					<td><a th:href = @{/pelajaran/edit_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}>Edit</a></td>
-					<td><a th:href = @{/pelajaran/delete_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}>Delete</a></td>
-					<td><a th:href = @{/pelajaran/detail_data?(pelajaranID=${pelajaranModel.kode_pelajaran})}>Detail</a></td>
+					<td><a th:text = ${barangModel.kdBarang}></a></td>
+					<td><a th:text = ${barangModel.namaBarang}></a></td>
+					<td><a th:text = ${barangModel.satuan}></a></td>
+					<td><a th:href = @{/barang/edit_data?(barangID=${barangModel.kdBarang})}>Edit</a></td>
+					<td><a th:href = @{/barang/delete_data?(barangID=${barangModel.kdBarang})}>Delete</a></td>
+					<td><a th:href = @{/barang/detail_data?(barangID=${barangModel.kdBarang})}>Detail</a></td>
 				</tr>
 			</tbody>
 		</table>

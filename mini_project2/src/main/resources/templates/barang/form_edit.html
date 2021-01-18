@@ -2,37 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Form Edit Siswa</title>
+		<title>Form Edit Barang</title>
 	</head>
 
 	<body>
-		<h3>Formulir Edit Siswa</h3>
-		<form method="post" th:action="@{/pelajaran/save_edit}">
+		<h3>Formulir Edit Barang</h3>
+		<form method="post" th:action="@{/barang/save_edit}">
 			<table>
+
 				<tr>
-					<td><label name="kode_pelajaran">Kode Pelajaran</label></td>
-					<td><input name="kode_pelajaran" th:value="${pelajaranModel.kode_pelajaran}" readonly/></td>
+					<td><label name="kdBarang">Kode Barang</label></td>
+					<td><input name="kdBarang" th:value="${barangModel.kdBarang}"/></td>
 				</tr>
 				<tr>
-					<td><label name="nama_pelajaran">Nama Pelajaran</label></td>
-					<td><input name="nama_pelajaran" th:value="${pelajaranModel.nama_pelajaran}"/></td>
+					<td><label name="namaBarang">Nama Barang</label></td>
+					<td><input name="namaBarang" th:value="${barangModel.namaBarang}"/></td>
 				</tr>
 				<tr>
-					<td><label name="jam_ajar_pelajaran">Jam Ajar Pelajaran</label></td>
-					<td><input name="jam_ajar_pelajaran" th:value="${pelajaranModel.jam_ajar_pelajaran}"/></td>
+					<td><label name="satuan">Satuan</label></td>
+					<td><input name="satuan" th:value="${barangModel.satuan}"/></td>
 				</tr>
 				<tr>
-					<td><label name="tingkat_pelajaran">Tingkat Pelajaran</label></td>
-					<td><input name="tingkat_pelajaran" th:value="${pelajaranModel.tingkat_pelajaran}"/></td>
+					<td><label name="hargaSiswa">Harga Siswa</label></td>
+					<td><input name="hargaSiswa" th:value="${barangModel.hargaSiswa}"/></td>
 				</tr>
 				<tr>
-					<td><label name="keterangan_pelajaran">Keternagan Pelajaran</label></td>
-					<td><input name="keterangan_pelajaran" th:value="${pelajaranModel.keterangan_pelajaran}"/></td>
+					<td><label name="keterangan">Keterangan</label></td>
+					<td><input name="keterangan" th:value="${barangModel.keterangan}"/></td>
 				</tr>
+
+				
 				<tr>
                     <td/>
                     <td>
-                    	<input type="submit" value="Submit"/>
+                    	<input type="submit" value="Update"/>
                     </td>
                 </tr>
 			</table>

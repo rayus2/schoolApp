@@ -1,80 +1,76 @@
 <!-- Modal -->
 <div class="row">
 	<div class="col-md-4">
-		<div class="modal fade" id="modal-tambah-data" tabindex="-1" role="dialog"
-			aria-labelledby="modal-edit" aria-hidden="true">
+		<div class="modal fade" id="modal-tambah-data" tabindex="-1"
+			role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
 			<div class="modal-dialog modal- modal-dialog-centered modal-md"
 				role="document">
 				<div class="modal-content">
 					<div class="modal-body p-0">
 						<div class="card bg-secondary border-0 mb-0">
 							<div class="card-header bg-transparent ">
-								<div class="text-center text-muted">Form Tambah Pelajaran</div>
+								<div class="text-center text-muted">Form Tambah Barang</div>
 							</div>
-
 							<div class="card-body">
-								<form class="col-md" th:action="@{tambah_data}">
-									<div class="form-group mb-3">
+								<form class="col-lg" th:action="@{tambah_data}">
+									<div class="form-group">
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text">Kode</span>
+												<span class="input-group-text">Kode Barang</span>
 											</div>
-											<input class="form-control" placeholder="Contoh : PEL999" type="text" name="kode_pelajaran">
+											<input class="form-control" type="text" id="kdBarang"
+												name="kdBarang">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text">Nama</span>
+												<span class="input-group-text">Nama Barang</span>
 											</div>
-											<input class="form-control" name="nama_pelajaran" placeholder="Contoh : Matematika" type="text">
+											<input class="form-control" type="text" id="namaBarang"
+												name="namaBarang">
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text" >Jam Ajar</i></span>
+												<span class="input-group-text">Satuan</i></span>
 											</div>
-											<input class="form-control" placeholder="Contoh : Bandung" name="jam_ajar_pelajaran"
-												type="text">
+											<input class="form-control" type="text" id="satuan"
+												name="satuan">
+										</div>
+									</div>
+								
+									<div class="form-group">
+										<div class="input-group ">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Harga Siswa</span>
+											</div>
+											<input class="form-control" id="hargaSiswa"
+												name="hargaSiswa" type="text">
 										</div>
 									</div>
 
-									<div class="form-group mb-3">
-										<div class="input-group ">
-											<div class="input-group-prepend">
-												<span class="input-group-text">Tingkat</span>
-											</div>
-											<select class="form-control" id="exampleFormControlSelect1" name="tingkat_pelajaran">
-										      <option value="10">10</option>
-										      <option value="11">11</option>
-										      <option value="12">12</option>
-										    </select>
-										</div>
-									</div>
 									<div class="form-group">
 										<div class="input-group ">
 											<div class="input-group-prepend">
 												<span class="input-group-text">Keterangan</span>
 											</div>
-											<input class="form-control" name="keterangan_pelajaran"
-												placeholder="Contoh : Ibu Rumah Tangga" type="text">
+											<input class="form-control" id="keterangan"
+												name="keterangan" type="text">
 										</div>
 									</div>
-									
+
 									<div class="text-center">
 										<button type="submit" class="btn btn-success my-4">Simpan</button>
 										<button type="button" class="btn btn-danger"
 											data-dismiss="modal">Batal</button>
 									</div>
-
-
 								</form>
 
 							</div>
 						</div>
-
 
 					</div>
 				</div>
