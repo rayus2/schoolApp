@@ -1,3 +1,4 @@
+
 package com.kodehive.mp2.repo;
 
 
@@ -12,10 +13,12 @@ public interface DistributorRepository extends JpaRepository<DistributorModel, S
 
 	
 	@Query("SELECT D FROM DistributorModel D WHERE D.kdDistributor = ?1")
-	DistributorModel noDistributor(String kdDistributor);
+	DistributorModel getId(String kdDistributor);
 
 
 	
 	
 	
 }
+
+
