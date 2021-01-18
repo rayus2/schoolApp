@@ -6,25 +6,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_DISTRIBUTOR") 
+@Table(name="t_distributor") 
 
 public class DistributorModel {
 	
 	
 	@Id
-	@Column(name="T_KD_DISTRIBUTOR")
+	@Column(name="kd_distributor")
 	private String kdDistributor;
 	
-	@Column(name="T_NAMA_DISTRIBUTOR")
+	@Column(name="nama_distributor")
 	private String namaDistributor;
 	
-	@Column(name="T_TIPE_DISTRIBUTOR")
+	@Column(name="tipe_distributor")
 	private String tipeDistributor;
 	
-	@Column(name="T_TELEPON")
+	@Column(name="telepon")
 	private String telepon;
 	
-	@Column(name="T_ALAMAT")
+	@Column(name="alamat")
 	private String alamat;
 
 	public String getKdDistributor() {
@@ -68,8 +68,7 @@ public class DistributorModel {
 	}
 	
 	
-	
-	
+
 	
 
 }
