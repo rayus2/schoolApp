@@ -14,100 +14,96 @@
 
 							<div class="card-body">
 								<form class="col-lg" th:action="@{save_edit}">
-								
-										
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">NIM</span>
-													</div>
-													<input class="form-control" type="text" id="nip_guru"
-														name="nip_guru">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Nama</span>
-													</div>
-													<input class="form-control" type="text" id="nama_guru"
-														name="nama_guru">
-												</div>
-											</div>
-											<div class="form-group mb-3">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<div class="row pb-4 m-0">
-															<div class="row m-0">
-																<div class="input-group-text">Gender</div>
-															</div>
 
-														</div>
-														<div class="row m-0">
-															<div class="form-group m-0">
-																<div class="input-group">
-																	<div class="input-group-prepend">
-																		<div class="input-group-text">
-																			<input type="radio" id="gender_guru"
-																				name="gender_guru" value="Pria">
-																		</div>
-																	</div>
-																	<input type="text" class="form-control" value="Pria"
-																		readonly>
+
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">NIM</span>
+											</div>
+											<input class="form-control" type="text" id="nip_guru"
+												name="nip_guru">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Nama</span>
+											</div>
+											<input class="form-control" type="text" id="nama_guru"
+												name="nama_guru">
+										</div>
+									</div>
+									<div class="form-group mb-3">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="row pb-4 m-0">
+													<div class="row m-0">
+														<div class="input-group-text">Gender</div>
+													</div>
+
+												</div>
+												<div class="row m-0">
+													<div class="form-group m-0">
+														<div class="input-group">
+															<div class="input-group-prepend">
+																<div class="input-group-text">
+																	<input type="radio" id="gender_guru" name="gender_guru"
+																		value="Pria">
 																</div>
 															</div>
-															<div class="form-group">
-																<div class="input-group">
-																	<div class="input-group-prepend">
-																		<div class="input-group-text">
-																			<input type="radio" id="gender_guru"
-																				name="gender_guru" value="Wanita">
-																		</div>
-																	</div>
-																	<input type="text" class="form-control" value="Wanita"
-																		readonly>
+															<input type="text" class="form-control" value="Pria"
+																readonly>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="input-group">
+															<div class="input-group-prepend">
+																<div class="input-group-text">
+																	<input type="radio" id="gender_guru" name="gender_guru"
+																		value="Wanita">
 																</div>
 															</div>
+															<input type="text" class="form-control" value="Wanita"
+																readonly>
 														</div>
-
 													</div>
-
 												</div>
+
 											</div>
 
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Telepon</i></span>
-													</div>
-													<input class="form-control" type="text" id="telepon_guru"
-														name="telepon_guru">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Gelar</i></span>
-													</div>
-													<input class="form-control" id="gelar_guru"
-														name="gelar_guru" type="text">
-												</div>
-											</div>
-										
+										</div>
+									</div>
 
-									
-											<div class="form-group">
-												<div class="input-group ">
-													<div class="input-group-prepend">
-														<span class="input-group-text">Alamat</span>
-													</div>
-													<input class="form-control" id="alamat_guru"
-														name="alamat_guru" type="text">
-												</div>
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Telepon</i></span>
 											</div>
-
-									
-
+											<input class="form-control" type="text" id="telepon_guru"
+												name="telepon_guru">
+										</div>
+									</div>
+									<div class="form-group mb-3">
+										<div class="input-group ">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Gelar</span>
+											</div>
+											<select class="form-control" id="exampleFormControlSelect1"
+												name="gelar_guru">
+												<option value="S.Pd">S.Pd</option>
+												<option value="S.Ag">S.Ag</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group ">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Alamat</span>
+											</div>
+											<input class="form-control" id="alamat_guru"
+												name="alamat_guru" type="text">
+										</div>
 									</div>
 									<div class="text-center">
 										<button type="submit" class="btn btn-success my-4">Simpan</button>
@@ -115,7 +111,6 @@
 											data-dismiss="modal">Batal</button>
 									</div>
 								</form>
-
 							</div>
 						</div>
 
