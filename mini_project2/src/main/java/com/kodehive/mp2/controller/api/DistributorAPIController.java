@@ -18,7 +18,7 @@ import com.kodehive.mp2.model.DistributorModel;
 import com.kodehive.mp2.service.DistributorService;
 
 @RestController
-public class DistributorApiController {
+public class DistributorAPIController {
 	
 	@Autowired
 	private DistributorService distriService;

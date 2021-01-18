@@ -119,9 +119,9 @@ public class DistributorController {
 		
 		String distributorID = request.getParameter("distributorID");
 		DistributorModel distributorModel = new DistributorModel();
-		distributorModel = this.distriService.getId(pelajaranID);
+		distributorModel = this.distriService.getId(distributorID);
 		
-		model.addAttribute("pelajaranModel", distributorID);
+		model.addAttribute("distributorModel", distributorModel);
 		
 		return "/distributor/form_edit";
 	}
