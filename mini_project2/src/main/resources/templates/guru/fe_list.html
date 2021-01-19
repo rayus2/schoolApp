@@ -286,15 +286,7 @@
 										guruModel.telepon_guru);
 								$('#modal-edit-data #gender_guru').val(
 										guruModel.gender_guru);
-								$(document).ready(function(){
-								    $(guruModel.gender_guru).click(function(){
-								        $("#Pria").prop("checked", true);
-								    });
-								    $(guruModel.gender_guru).click(function(){
-								        $("#Wanita").prop("checked", true);
-								    });
-								});
-								$("input[name=gender_guru][value=" + guruModel.gender_guru + "]").attr('checked', 'checked');
+								$("input[name=gender_guru][value="+ guruModel.gender_guru + "]").attr('checked', 'checked');
 								$('#modal-edit-data #gelar_guru').val(
 										guruModel.gelar_guru);
 								$('#modal-edit-data #alamat_guru').val(
@@ -304,7 +296,6 @@
 					})
 
 		})
-
 	</script>
 </body>
 
