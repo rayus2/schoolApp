@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Form Edit Guru</title>
-	</head>
+<head>
+<meta charset="ISO-8859-1">
+<title>Form Edit Guru</title>
+</head>
 
-	<body>
-		<h3>Formulir Edit Guru</h3>
-		<form method="post" th:action="@{/guru/save_edit}">
-			<table>
-				<tr>
-					<td><label name="nip_guru">NIP Guru</label></td>
-					<td><input name="nip_guru" th:value="${guruModel.nip_guru}"/></td>
-				</tr>
-				<tr>
-					<td><label name="nama_guru">Nama Guru</label></td>
-					<td><input name="nama_guru" th:value="${guruModel.nama_guru}"/></td>
-				</tr>
-				<tr>
-					<td><label name="telepon_guru">Telepon Guru</label></td>
-					<td><input name="telepon_guru" th:value="${guruModel.telepon_guru}"/></td>
-				</tr>
-				<tr>
-					<td><label name="gender_guru">Gender Guru</label></td>
-					<td><input name="gender_guru" th:value="${guruModel.gender_guru}"/>
-				</tr>
-				<tr>
-					<td><label name="gelar_guru">Gelar Guru</label></td>
-					<td><input name="gelar_guru" th:value="${guruModel.gelar_guru}"/></td>
-				</tr>
-				<tr>
-					<td><label name="alamat_guru">Alamat Guru</label></td>
-					<td><input name="alamat_guru" th:value="${guruModel.alamat_guru}"/></td>
-				</tr>
-				
-				<tr>
-                    <td/>
-                    <td>
-                    	<input type="submit" value="Update"/>
-                    </td>
-                </tr>
-			</table>
-		</form>
-	</body>
+<body>
+	<h3>Formulir Edit Guru</h3>
+	<form method="post" th:action="@{/guru/save_edit}">
+		<table>
+			<tr>
+				<td><label name="nip_guru">NIP Guru</label></td>
+				<td><input name="nip_guru" th:value="${guruModel.nip_guru}" /></td>
+			</tr>
+			<tr>
+				<td><label name="nama_guru">Nama Guru</label></td>
+				<td><input name="nama_guru" th:value="${guruModel.nama_guru}" /></td>
+			</tr>
+			<tr>
+				<td><label name="telepon_guru">Telepon Guru</label></td>
+				<td><input name="telepon_guru"
+					th:value="${guruModel.telepon_guru}" /></td>
+			</tr>
+			<tr>
+				<td><label name="gender_guru">Gender Siswa</label></td>
+				<td><input type="radio" name="gender_guru" value="Pria" id="Pria"
+					th:field="${guruModel.gender_guru}">Pria</radiobutton> <input
+					type="radio" name="gender_guru" value="Wanita" id="Wanita"
+					th:field="${guruModel.gender_guru}">Wanita</radiobutton></td>
+			</tr>
+			<tr>
+				<td><label name="gelar_guru">Gelar Guru</label></td>
+				<td><input name="gelar_guru" th:value="${guruModel.gelar_guru}" /></td>
+			</tr>
+			<tr>
+				<td><label name="alamat_guru">Alamat Guru</label></td>
+				<td><input name="alamat_guru"
+					th:value="${guruModel.alamat_guru}" /></td>
+			</tr>
+
+			<tr>
+				<td />
+				<td><input type="submit" value="Update" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
 </html>
