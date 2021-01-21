@@ -8,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kodehive.mp2.model.NilaiModel;
 import com.kodehive.mp2.model.SiswaModel;
 import com.kodehive.mp2.model.SppModel;
+import com.kodehive.mp2.repo.NilaiRepository;
 import com.kodehive.mp2.repo.SiswaRepo;
 import com.kodehive.mp2.repo.SppRepo;
 
@@ -22,6 +24,9 @@ public class SiswaService {
 	
 	@Autowired
 	private SppRepo sppRepo;
+	
+	@Autowired
+	private NilaiRepository nilaiRepository;
 	
 	public Page<SiswaModel> listSiswa(Pageable pageable){
 		return siswaRepo.findAll(pageable);
@@ -54,6 +59,11 @@ public class SiswaService {
 	// save spp
 	public void save_spp(SppModel sppModel) {
 		sppRepo.save(sppModel);
+	}
+	
+	// save nilai
+	public void save_nilai(NilaiModel nilaiModel) {
+		nilaiRepository.save(nilaiModel);
 	}
 	
 }

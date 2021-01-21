@@ -1,0 +1,82 @@
+<div class="col-md-4">
+	<div class="modal fade" id="modal-pilihguru" tabindex="-1"
+		role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+		<div class="modal-dialog modal- modal-dialog-centered modal-md" role="document">
+			<div class="modal-content bg-gradient-secondary">
+
+				<div class="modal-header">
+					<h3 class="modal-title" id="modal-title-notification">Pilih Guru</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<div class="table-responsive pt-2 pb-4">
+
+						<table class="table align-items-center table-flush"  >
+							<thead class="thead-light">
+								<tr>
+									<th>NIP</th>
+									<th>Nama Guru</th>
+									<th>Gelar</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody class="list">
+								<tr th:each="${penjadwalanList}">
+									<th th:text="${nip_guru}"></th>
+									<th th:text="${nama_guru}"></th>
+									<th th:text="${gelar_guru}"></th>
+									<th th:text="Pilih"></th>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+				<div class="modal-footer"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function load_table(){
+		$.ajax({
+			type:'get',
+			url: '/mp2/transaksi/guru',
+			dataType:'json',
+			success: function(PenjadwalGuru){
+				var data='';
+				$.each(PenjadwalGuru, function(index, value){
+					data += '<tr>';
+					data += '<td>'+value.nip_guru+'</td>';
+					data += '<td>'+value.nama_guru+'</td>';
+					data += '<td>'+value.gelar_guru+'</td>';
+					data += '<td class="pl-0 pr-0"><button type="button" class="btn btn-warning" id="pilih" value="'+value.nip_guru+'">Pilih</button></td>';
+					data += '</tr>';
+				});
+				$("#modallist_pilihguru").append(data);
+			}
+		})
+	}
+	
+	$(function(){
+		var no=0;
+		
+		load_table();
+	
+		$(".table #pilih").on("click", function(){
+			alert("cek");
+		})
+		
+		
+		
+		
+	})
+	
+	
+</script>

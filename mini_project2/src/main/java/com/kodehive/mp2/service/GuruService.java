@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kodehive.mp2.model.GuruModel;
+import com.kodehive.mp2.model.PenjadwalanModel;
 import com.kodehive.mp2.repo.GuruRepository;
+import com.kodehive.mp2.repo.PenjadwalanRepository;
 
 @Service
 @Transactional
@@ -18,6 +20,9 @@ public class GuruService {
 
 	@Autowired
 	private GuruRepository guruRepository;
+	
+	@Autowired
+	private PenjadwalanRepository penjadwalanRepository;
 
 	public List<GuruModel> listGuru() {
 		// TODO Auto-generated method stub
@@ -53,5 +58,13 @@ public class GuruService {
 		// TODO Auto-generated method stub
 		return guruRepository.findAll(pageable);
 	}
+	
+	// save jadwal guru
+	public void save_jadwal(PenjadwalanModel penjadwalanModel) {
+		penjadwalanRepository.save(penjadwalanModel);
+	}
+
+
+	
 	
 }

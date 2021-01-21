@@ -19,16 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kodehive.mp2.model.SiswaModel;
 import com.kodehive.mp2.model.SppModel;
 import com.kodehive.mp2.service.SiswaService;
-import com.kodehive.mp2.service.SppRequest;
 
+/*import com.kodehive.mp2.service.SppRequest;
+*/
 @RestController
 public class SiswaApiController {
 
 	@Autowired
 	private SiswaService siswaService;
 	
-	@Autowired
-	private SppRequest sppRequest;
+	/*
+	 * @Autowired private SppRequest sppRequest;
+	 */
 	
 	
 	@PostMapping("/siswa/api_post")
@@ -84,17 +86,18 @@ public class SiswaApiController {
 		return map;
 	}
 	
-	@PostMapping("/transaksi/spp")
-	public Map<String, Object> transaksi_spp(@RequestBody SppModel sppModel) {
-		
-		this.sppRequest.saveRequest(sppModel);
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("Success", Boolean.TRUE);
-		map.put("Pesan", "Data Berhasil Ditambahkan");
-		
-		return map;
-	}
+	/*
+	 * @PostMapping("/transaksi/spp") public Map<String, Object>
+	 * transaksi_spp(@RequestBody SppModel sppModel) {
+	 * 
+	 * this.sppRequest.saveRequest(sppModel); Map<String, Object> map = new
+	 * HashMap<String, Object>();
+	 * 
+	 * map.put("Success", Boolean.TRUE); map.put("Pesan",
+	 * "Data Berhasil Ditambahkan");
+	 * 
+	 * return map; }
+	 */
 	
 	@GetMapping("/transaksi/siswa")
 	public List<SiswaModel> getSiswa(SiswaModel siswaModel) {

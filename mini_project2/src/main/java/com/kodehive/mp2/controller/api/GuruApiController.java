@@ -1,6 +1,8 @@
 package com.kodehive.mp2.controller.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +79,15 @@ public class GuruApiController {
 		map.put("Pesan", "Data Berhasil Di Hapus");
 		
 		return map;
+	}
+	
+	@GetMapping("/transaksi/guru")
+	public List<GuruModel> getSiswa(GuruModel GuruModel) {
+		
+		List<GuruModel> guruModelList = new ArrayList<GuruModel>();
+		guruModelList = this.guruService.listGuru();
+		
+		return guruModelList;
 	}
 	
 }
