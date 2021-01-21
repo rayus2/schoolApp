@@ -9,5 +9,6 @@ public interface PelajaranRepo extends JpaRepository<PelajaranModel, String>{
 
 	@Query("SELECT P FROM PelajaranModel P WHERE P.kode_pelajaran = ?1")
 	PelajaranModel getId(String kode_pelajaran);
+
 	
 }
