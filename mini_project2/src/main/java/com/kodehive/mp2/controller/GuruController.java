@@ -16,14 +16,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kodehive.mp2.model.GuruModel;
+import com.kodehive.mp2.model.PelajaranModel;
 import com.kodehive.mp2.model.PenjadwalanModel;
 import com.kodehive.mp2.service.GuruService;
+import com.kodehive.mp2.service.PelajaranService;
 
 @Controller
 public class GuruController {
 
 	@Autowired
 	private GuruService guruService;
+	
+	@Autowired
+	private PelajaranService pelajaranService;
 
 	@RequestMapping("guru/sidenav")
 	public String p_sidenav() {
@@ -172,7 +177,7 @@ public class GuruController {
 
 		return "/guru/detail";
 	}
-	// Transaksi SPP Siswa
+	// Transaksi Penadwalan Guru
 
 
 	@RequestMapping("/transaksi/pilihguru")
@@ -186,6 +191,9 @@ public class GuruController {
 		List<GuruModel> guruModel = new ArrayList<GuruModel>();
 		guruModel = this.guruService.listGuru();
 		model.addAttribute("penjadwalanList", guruModel);
+		List<PelajaranModel> pelajaranModel = new ArrayList<PelajaranModel>();
+		pelajaranModel = this.pelajaranService.pelajaranList();
+		model.addAttribute("pelajaranList", pelajaranModel);
 
 		return "/transaksi/Penjadwalan";
 	}

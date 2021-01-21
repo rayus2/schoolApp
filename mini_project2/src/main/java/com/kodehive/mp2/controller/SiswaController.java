@@ -14,8 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kodehive.mp2.model.NilaiModel;
+import com.kodehive.mp2.model.PelajaranModel;
 import com.kodehive.mp2.model.SiswaModel;
 import com.kodehive.mp2.model.SppModel;
+import com.kodehive.mp2.service.PelajaranService;
 import com.kodehive.mp2.service.SiswaService;
 
 @Controller
@@ -23,6 +26,9 @@ public class SiswaController {
 
 	@Autowired
 	private SiswaService siswaService;
+	
+	@Autowired
+	private PelajaranService pelajaranService;
 	
 	@RequestMapping("siswa/sidenav")
 	public String p_sidenav() {
@@ -239,4 +245,43 @@ public class SiswaController {
 		
 		return "redirect:/transaksi/spp_siswa";
 	}
+	
+	// nilai
+	@RequestMapping("/transaksi/nilai")
+	public String nilai_siswa(Model model) {
+		
+		List<SiswaModel> siswaModel = new ArrayList<SiswaModel>();
+		siswaModel = this.siswaService.siswaTransaksi();
+		model.addAttribute("sppList", siswaModel);
+		List<PelajaranModel> pelajaranModel = new ArrayList<PelajaranModel>();
+		pelajaranModel = this.pelajaranService.pelajaranList();
+		model.addAttribute("pelajaranList", pelajaranModel);
+		
+		return "/transaksi/nilai_siswa";
+	}
+	
+	@RequestMapping("/transaksi/save_nilai")
+	public String save_nilai(HttpServletRequest request, Model model) {
+		
+		String kode_nilai = request.getParameter("kode_nilai");
+		Date tgl_ujian = Date.valueOf(request.getParameter("tgl_ujian"));
+		Date tgl_penilaian = Date.valueOf(request.getParameter("tgl_penilaian"));
+		String tipe_ujian = request.getParameter("tipe_ujian");
+		String nilai_ujian = request.getParameter("nilai_ujian");
+		String keterangan_ujian = request.getParameter("keterangan_ujian");
+		
+		NilaiModel nilaiModel = new NilaiModel();
+		
+		nilaiModel.setKode_nilai(kode_nilai);
+		nilaiModel.setTgl_ujian(tgl_ujian);
+		nilaiModel.setTgl_penilaian(tgl_penilaian);
+		nilaiModel.setTipe_ujian(tipe_ujian);
+		nilaiModel.setNilai_ujian(nilai_ujian);
+		nilaiModel.setKeterangan_ujian(keterangan_ujian);
+		
+		siswaService.save_nilai(nilaiModel);
+		
+		return "redirect:/transaksi/nilai_siswa";
+	}
+	
 }
