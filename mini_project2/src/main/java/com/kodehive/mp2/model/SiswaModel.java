@@ -45,7 +45,6 @@ public class SiswaModel {
 	@Column(name="kelas_siswa")
 	private String kelas_siswa;
 
-
 	public String getNim_siswa() {
 		return nim_siswa;
 	}

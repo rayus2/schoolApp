@@ -1,6 +1,8 @@
 package com.kodehive.mp2.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kodehive.mp2.model.SiswaModel;
+import com.kodehive.mp2.model.SppModel;
 import com.kodehive.mp2.service.SiswaService;
 
 @Controller
@@ -25,12 +28,7 @@ public class SiswaController {
 	public String p_sidenav() {
 		return "/components/sidenav";
 	}
-	
-	@RequestMapping("siswa/topnav")
-	public String p_topnav() {
-		return "/components/topnav";
-	}
-	
+
 	@RequestMapping("/")
 	public String index() {
 		return "/index";
@@ -190,5 +188,55 @@ public class SiswaController {
 		return "/siswa/detail";
 	}
 	
+	// Transaksi SPP Siswa
 	
+	@RequestMapping("/transaksi/sidenav")
+	public String s_sidenav() {
+		return "/components/sidenav";
+	}
+
+	@RequestMapping("/transaksi/pilihsiswa")
+	public String pilihsiswa() {
+		
+		
+		return "/transaksi/modal_pilihsiswa";
+	}
+	
+	@RequestMapping("/transaksi/spp")
+	public String spp_siswa(Model model) {
+		
+		List<SiswaModel> siswaModel = new ArrayList<SiswaModel>();
+		siswaModel = this.siswaService.siswaTransaksi();
+		model.addAttribute("sppList", siswaModel);
+		
+		return "/transaksi/spp_siswa";
+	}
+	
+	@RequestMapping("/transaksi/save_spp")
+	public String save_spp(HttpServletRequest request, Model model) {
+		
+		String no_spp = request.getParameter("no_spp");
+		Date tgl_spp = Date.valueOf(request.getParameter("tgl_spp"));
+		String bulan_spp = request.getParameter("bulan_spp");
+		String tahunajar_spp = request.getParameter("tahunajar_spp");
+		int jumlah_spp = Integer.valueOf(request.getParameter("jumlah_spp"));
+		String tipebayar_spp = request.getParameter("tipebayar_spp");
+		int bayar_spp = Integer.valueOf(request.getParameter("bayar_spp"));
+		int kembalian_spp = Integer.valueOf(request.getParameter("kembalian_spp"));
+		
+		SppModel sppModel = new SppModel();
+		
+		sppModel.setNo_spp(no_spp);
+		sppModel.setTgl_spp(tgl_spp);
+		sppModel.setBulan_spp(bulan_spp);
+		sppModel.setTahunajar_spp(tahunajar_spp);
+		sppModel.setJumlah_spp(jumlah_spp);
+		sppModel.setTipebayar_spp(tipebayar_spp);
+		sppModel.setBayar_spp(bayar_spp);
+		sppModel.setKembalian_spp(kembalian_spp);
+		
+		siswaService.save_spp(sppModel);
+		
+		return "redirect:/transaksi/spp_siswa";
+	}
 }
