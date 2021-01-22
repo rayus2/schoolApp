@@ -101,7 +101,7 @@
 								<h3 class="mb-0">Sumbangan Pembinaan Pendidikan (SPP)</h3>
 							</div>
 							<div class="card-body">
-								<form th:action="@{/transaksi/save_spp}" method="post">
+								<form th:action="@{save_spp}" method="post">
 									<div class="row justify-content-center">
 										<div class="col-md-3">
 										 	<div class="form-group">
@@ -188,8 +188,8 @@
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="example-text-input" class="form-control-label pl-1">Tipe Bayar</label>
-												<select class="form-control" name="tipebayar_spp">
+												<label class="form-control-label pl-1">Tipe Bayar</label>
+												<select class="form-control" name="tipebayar_spp" id="selection_tipebayar">
 													<option>-- Pilih Tipe Bayar--</option>
 													<option value="Cash">Cash</option>
 													<option value="Cicilan">Cicilan</option>
@@ -209,7 +209,7 @@
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="example-text-input" class="form-control-label pl-1">Kembalian</label>
+												<label class="form-control-label pl-1" id="kembalian_spp_label">Kembalian</label>
 												<div class="input-group">
 											        <div class="input-group-prepend">
 											            <span class="input-group-text" id="basic-addon1" >Rp</span>
@@ -302,6 +302,36 @@
 				</div>
 			</div>
 		</div>
+	
+		<div id="modal-success">
+			<div class="col-md-4">
+				<div class="modal fade" id="modal-success-notif" tabindex="-1"
+					role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+					<div class="modal-dialog modal-danger modal-dialog-centered modal-"
+						role="document">
+						<div class="modal-content bg-gradient-success">
+			
+							<div class="modal-header">
+							</div>
+			
+							<div class="modal-body">
+			
+								<div class="py-3 text-center">
+									<i class="fas fa-check ni-5x"></i>
+									<h4 class="heading m-4">Berhasil Memasukan Data SPP</h4>
+								</div>
+			
+							</div>
+			
+							<div class="modal-footer">
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
 	</div>
 
 	
@@ -378,20 +408,50 @@
 			})
 			
 			$(".table #list_sppsiswa").on("click", "#batal", function(){
-	        	$(this).parents("tr").remove();
+	        	
+	        	var rowCount = $('.table #list_sppsiswa tr').length;				
+        		$(this).parents("tr").remove();		   
+				
+        		if(rowCount == 0) {
+					$("#jumlah_spp").val(0);
+					$("#bayar_spp").val(0);
+					$('#selection_tipebayar').prop('selectedIndex',0);
+				} else {
+					bayar_spp -= 100000;
+				}	
+        		
+	    		$("#jumlah_spp").val(bayar_spp);
+	    		$("#bayar_spp").val(bayar_spp);
+	        	
 		    });
 			
 			$("#submit").on("click", function(){
-	        	$.ajax({
-	        		
-	        	})
-		    });
+				$("#modal-success #modal-success-notif").modal("show");	        				
+       			setTimeout(function(){
+        			$("#modal-success-notif").modal("hide");	        				
+       			}, 1000)
+       	    });
+			
+			$('#selection_tipebayar').on('change', function() {
+				var tipe = this.value;
+				
+				var getbayar = $("#jumlah_spp").val()
+				var cicil = $("#jumlah_spp").val()
+				
+				if(tipe = "Cash"){
+					$("#bayar_spp").val(getbayar);
+				} else {
+					$("#bayar_spp").val(cicil/2);	
+				}		
+			});
 			
 			$("#hitung").on("click", function(){
 				bayar = $("#bayar_spp").val();
 				kembalian = bayar - bayar_spp;
+				
 				if(kembalian < 0) {
-					$("#kembalian_spp").val(0);					
+					$("#kembalian_spp_label").text("Hutang");
+					$("#kembalian_spp").val(kembalian);					
 				} else {
 					$("#kembalian_spp").val(kembalian);
 				}

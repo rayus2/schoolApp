@@ -35,7 +35,7 @@ public class SiswaController {
 	}
 
 	@RequestMapping("siswa/fe_list")
-	public String fe_list_siswa(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+	public String fe_list_siswa(Model model, @PageableDefault(page=0, value = 10) Pageable pageable) {
 		
 		Page<SiswaModel> siswaModelList = siswaService.listSiswa(pageable);
 		model.addAttribute("siswaModelList", siswaModelList);
@@ -73,7 +73,7 @@ public class SiswaController {
 	}
 	
 	@RequestMapping("/siswa/list")
-	public String list_siswa(Model model, @PageableDefault(page=0, value = 5) Pageable pageable) {
+	public String list_siswa(Model model, @PageableDefault(page=0, value = 10) Pageable pageable) {
 		
 		Page<SiswaModel> siswaModelList = siswaService.listSiswa(pageable);
 		model.addAttribute("siswaModelList", siswaModelList);
@@ -237,6 +237,6 @@ public class SiswaController {
 		
 		siswaService.save_spp(sppModel);
 		
-		return "redirect:/transaksi/spp_siswa";
+		return "redirect:/transaksi/spp";
 	}
 }
