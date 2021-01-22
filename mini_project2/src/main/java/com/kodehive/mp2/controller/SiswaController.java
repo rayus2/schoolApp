@@ -281,7 +281,7 @@ public class SiswaController {
 		
 		siswaService.save_nilai(nilaiModel);
 		
-		return "redirect:/transaksi/nilai_siswa";
+		return "redirect:/transaksi/nilai";
 	}
 	
 }
