@@ -157,7 +157,8 @@
 													class="form-control-label pl-1">Tipe Ujian</label> <select
 													class="form-control" name="tipe_ujian">
 													<!-- pelajaran -->
-													<option disabled="disabled" selected="selected">-- Pilih Tipe --</option>
+													<option disabled="disabled" selected="selected">--
+														Pilih Tipe --</option>
 													<option value="Ulangan">Ulangan</option>
 													<option value="UTS">UTS</option>
 													<option value="Uas">UAS</option>
@@ -207,7 +208,7 @@
 
 									</div>
 									<div class="col-md-13 text-right">
-								
+
 
 										<button type="submit" class="btn btn-success" id="submit">Submit</button>
 									</div>
@@ -314,7 +315,6 @@
 		<script src="../assets/js/argon.js?v=1.2.0"></script>
 
 		<script type="text/javascript">
-			
 			$(function() {
 				$("#sidenav-main").load("sidenav");
 
@@ -356,8 +356,8 @@
 															+ "<td><input></td>"
 															+ "<td><button type='button' class='btn btn-danger' id='batal'>BATAL</button></td>"
 															+ "</tr>";
-													$("#list_nilaisiswa").append(
-															markup);
+													$("#list_nilaisiswa")
+															.append(markup);
 													$(
 															"#modalpilihsiswa #modal-pilihsiswa")
 															.modal("hide");
@@ -372,7 +372,9 @@
 
 				$("#submit").on("click", function() {
 					$.ajax({
-
+						success : function(data) {
+							alert('submit successfully');
+						}
 					})
 				});
 
