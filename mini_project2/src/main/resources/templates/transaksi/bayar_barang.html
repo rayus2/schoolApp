@@ -3,13 +3,8 @@
 * Argon Dashboard - v1.2.0
 =========================================================
 * Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-
 * Copyright  Creative Tim (http://www.creative-tim.com)
 * Coded by www.creative-tim.com
-
-
-
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
@@ -81,7 +76,7 @@
 										<li class="breadcrumb-item"><a href="#"><i
 												class="fas fa-home"></i></a></li>
 										<li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-										<li class="breadcrumb-item active" aria-current="page">SPP</li>
+										<li class="breadcrumb-item active" aria-current="page">Pembayaran</li>
 									</ol>
 								</nav>
 							</div>
@@ -98,42 +93,28 @@
 					<div class="col">
 						<div class="card">
 							<div class="card-header bg-transparent">
-								<h3 class="mb-0">Sumbangan Pembinaan Pendidikan (SPP)</h3>
+								<h3 class="mb-0">Pembayaran Barang Siswa</h3>
 							</div>
 							<div class="card-body">
-								<form th:action="@{save_spp}" method="post">
+								<form th:action="@{/transaksi/save_spp}" method="post">
 									<div class="row justify-content-center">
 										<div class="col-md-3">
 										 	<div class="form-group">
-										        <label for="example-text-input" class="form-control-label pl-1">No.SPP</label>
-										        <input class="form-control" type="text" placeholder="SPP001" name="no_spp">
+										        <label for="example-text-input" class="form-control-label pl-1">No. Pembayaran</label>
+										        <input class="form-control" type="text" placeholder="PBY001" name="no_bayar">
 										    </div>
 										</div>
 										<div class="col-md-3">
 										 	<div class="form-group">
-										        <label for="example-text-input" class="form-control-label pl-1">Tanggal SPP</label>
-										        <input class="form-control" type="date" placeholder="Pilih Tanggal" name="tgl_spp">
+										        <label for="example-text-input" class="form-control-label pl-1">Tgl Bayar</label>
+										        <input class="form-control" type="date" placeholder="Pilih Tanggal" name="tgl_bayar">
 										    </div>
 										</div>
 
 										<div class="col-md-3">
 											<div class="form-group">
-										        <label for="example-text-input" class="form-control-label pl-1">Bulan</label>
-												<select class="form-control" name="bulan_spp">
-													<option>-- Pilih Bulan --</option>
-													<option value="Januari">Januari</option>
-													<option value="Februari">Februari</option>
-													<option value="Maret">Maret</option>
-													<option value="April">April</option>
-													<option value="Mei">Mei</option>
-													<option value="Juni">Juni</option>
-													<option value="Juli">Juli</option>
-													<option value="Agustus">Agustus</option>
-													<option value="September">September</option>
-													<option value="Oktober">Oktober</option>
-													<option value="November">November</option>
-													<option value="Desember">Desember</option>
-												</select>
+										        <label for="example-text-input" class="form-control-label pl-1">Siswa</label>
+												<input class="form-control" type="text" name="siswa">
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -148,28 +129,30 @@
 										</div>
 
 									</div>
-								
+
 
 
 									<div class="row">
 										<div class="col-md-12 text-right">
-											<button type="button" class="btn btn-sm btn-info" id="pilih-siswa">Pilih Siswa</button>
+											<button type="button" class="btn btn-sm btn-info" id="pilih-barang">Pilih Barang</button>
 										</div>
 									</div>
-									
+
 									<div class="table-responsive pt-2 pb-4">
 										<table class="table align-items-center table-flush">
 											<thead class="thead-light">
 												<tr>
 													<th>NIM</th>
-													<th>Nama Siswa</th>
-													<th>Kelas</th>
-													<th>SPP</th>
+													<th>Kode Barang</th>
+													<th>Barang</th>
+													<th>Harga</th>
+													<th>Jumlah</th>
+													<th>Sub</th>
 													<th>Action</th>
 												</tr>
 											</thead>
-											<tbody class="list" id="list_sppsiswa">
-																				
+											<tbody class="list" id="list_bayarbarang">
+
 											</tbody>
 										</table>
 									</div>
@@ -177,19 +160,19 @@
 									<div class="row justify-content-center">
 										<div class="col-md-3">
 											<div class="form-group">
-											    <label for="example-text-input" class="form-control-label pl-1">Total Bayar SPP</label>
+											    <label for="example-text-input" class="form-control-label pl-1">Total Bayar</label>
 												<div class="input-group">
 											        <div class="input-group-prepend">
 											            <span class="input-group-text" id="basic-addon1">Rp</span>
 											        </div>
-											        <input type="text" class="form-control" readonly name="jumlah_spp" id="jumlah_spp" value="0">
+											        <input type="text" class="form-control" readonly name="jumlah_bayar" id="jumlah_bayar" value="0">
 											    </div>
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
 												<label class="form-control-label pl-1">Tipe Bayar</label>
-												<select class="form-control" name="tipebayar_spp" id="selection_tipebayar">
+												<select class="form-control" name="tipebayar_bayar" id="selection_tipebayar">
 													<option>-- Pilih Tipe Bayar--</option>
 													<option value="Cash">Cash</option>
 													<option value="Cicilan">Cicilan</option>
@@ -203,7 +186,7 @@
 											        <div class="input-group-prepend">
 											            <span class="input-group-text" id="basic-addon1">Rp</span>
 											        </div>
-											        <input type="text" class="form-control" name="bayar_spp" id="bayar_spp" value="0">
+											        <input type="text" class="form-control" name="bayar_bayar" id="bayar_bayar" value="0">
 											    </div>
 											</div>
 										</div>
@@ -214,14 +197,14 @@
 											        <div class="input-group-prepend">
 											            <span class="input-group-text" id="basic-addon1" >Rp</span>
 											        </div>
-											        <input type="text" class="form-control" readonly name="kembalian_spp" id="kembalian_spp" value="0">
+											        <input type="text" class="form-control" readonly name="kembalian_bayar" id="kembalian_bayar" value="0">
 											    </div>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-13 text-right">
 									<button type="button" class="btn btn-info" id="hitung">Hitung</button>
-									
+
 									<button type="submit" class="btn btn-success" id="submit">Submit</button>
 									</div>
 								</form>
@@ -229,7 +212,40 @@
 						</div>
 					</div>
 				</div>
-			
+
+
+
+		<div id="modal-success">
+			<div class="col-md-4">
+				<div class="modal fade" id="modal-success-notif" tabindex="-1"
+					role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+					<div class="modal-dialog modal-danger modal-dialog-centered modal-"
+						role="document">
+						<div class="modal-content bg-gradient-success">
+
+							<div class="modal-header">
+							</div>
+
+							<div class="modal-body">
+
+								<div class="py-3 text-center">
+									<i class="fas fa-check ni-5x"></i>
+									<h4 class="heading m-4">Berhasil Memasukan Data Pembayaran</h4>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 				<!-- Footer -->
 				<footer class="footer pt-0">
 					<div class="row align-items-center justify-content-lg-between">
@@ -255,45 +271,45 @@
 					</div>
 				</footer>
 			</div>
-		
-		<div id="modalpilihsiswa">
+
+		<div id="modalpilihbarang">
 			<div class="col-md-4">
-				<div class="modal fade" id="modal-pilihsiswa" tabindex="-1"
+				<div class="modal fade" id="modal-pilihbarang" tabindex="-1"
 					role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
 					<div class="modal-dialog modal- modal-dialog-centered modal-md" role="document">
 						<div class="modal-content bg-gradient-secondary">
-			
+
 							<div class="modal-header">
-								<h3 class="modal-title" id="modal-title-notification">Pilih Siswa</h3>
+								<h3 class="modal-title" id="modal-title-notification">Pilih Barang</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-			
+
 							<div class="modal-body">
 								<div class="table-responsive pt-2 pb-4">
-			
+
 									<table class="table align-items-center table-flush"  >
 										<thead class="thead-light">
 											<tr>
-												<th>NIM</th>
-												<th>Nama Siswa</th>
-												<th>Kelas</th>
+												<th>Kode Barang</th>
+												<th>Barang</th>
+												<th>Harga Siswa</th>
 												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody class="list">
 											<tr th:each="spp_pilihSiswa:${sppList}">
-												<td th:text="${spp_pilihSiswa.nim_siswa}"></td>
-												<td th:text="${spp_pilihSiswa.nama_siswa}"></td>
-												<td th:text="${spp_pilihSiswa.kelas_siswa}"></td>
+												<td th:text="${bayar_pilihBarang.kdBarang}"></td>
+												<td th:text="${bayar_pilihBarang.namaBarang}"></td>
+												<td th:text="${bayar_pilihBarang.hargaSiswa}"></td>
 												<td><button type="button"
-													class="btn btn-info" id="spp_pilih"
-													th:value=${spp_pilihSiswa.nim_siswa}>PILIH</button></td>
+													class="btn btn-info" id="bayar_pilih"
+													th:value=${bayar_pilihBarang.kdBarang}>PILIH</button></td>
 											</tr>
 										</tbody>
 									</table>
-			
+
 								</div>
 							</div>
 							<div class="modal-footer"></div>
@@ -302,39 +318,9 @@
 				</div>
 			</div>
 		</div>
-	
-		<div id="modal-success">
-			<div class="col-md-4">
-				<div class="modal fade" id="modal-success-notif" tabindex="-1"
-					role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-					<div class="modal-dialog modal-danger modal-dialog-centered modal-"
-						role="document">
-						<div class="modal-content bg-gradient-success">
-			
-							<div class="modal-header">
-							</div>
-			
-							<div class="modal-body">
-			
-								<div class="py-3 text-center">
-									<i class="fas fa-check ni-5x"></i>
-									<h4 class="heading m-4">Berhasil Memasukan Data SPP</h4>
-								</div>
-			
-							</div>
-			
-							<div class="modal-footer">
-							</div>
-			
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		</div>
 	</div>
 
-	
+
 	<!-- Argon Scripts -->
 	<!-- Core -->
 	<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -354,15 +340,15 @@
 	<script src="../assets/js/argon.js?v=1.2.0"></script>
 
 	<script type="text/javascript">
-		var spp = 100000;
-		var cicilan = 50000;
-		
+		var bayar_pilihBarang.kdBarang = 30000;
+		var cicilan = 5000;
+
 		var kembalian;
 		var bayar;
-		var bayar_spp;
+		var bayar_bayar;
 		$(function() {
 			$("#sidenav-main").load("sidenav");
-			
+
 			$("#logo").on("click", function() {
 				$.ajax({
 					url : 'index',
@@ -372,93 +358,97 @@
 					}
 				})
 			});
-			
-			$("#pilih-siswa").on("click", function(){
-				$("#modalpilihsiswa #modal-pilihsiswa").modal("show");
+
+			$("#pilih-barang").on("click", function(){
+				$("#modalpilihbarang #modal-pilihbarang").modal("show");
 			})
-			
-			$(".table #spp_pilih").on("click", function(){
-				var nim_siswa = $(this).val();
+
+			$(".table #bayar_pilih").on("click", function(){
+				var kdBarang = $(this).val();
 				$.ajax({
 					type:'get',
-					url:'/mp2/siswa/api_getById?nim_siswa='+nim_siswa,
+					url:'/mp2/siswa/api_getById?kdBarang='+nkdBarang,
 					success: function(result){
 						var markup = 	"<tr>"+
-									 	"<td>" + result.nim_siswa + "</td>"+
-									 	"<td>" + result.nama_siswa + "</td>"+
-									 	"<td>" + result.kelas_siswa + "</td>"+
+									 	"<td>" + result.kdBarang + "</td>"+
+									 	"<td>" + result.namaBarang + "</td>"+
+									 	"<td>" + result.hargaSiswa + "</td>"+
 									 	"<td>100000</td>"+
 									 	"<td><button type='button' class='btn btn-danger' id='batal'>BATAL</button></td>"+
 									 	"</tr>";
-			            $("#list_sppsiswa").append(markup);
-			    		$("#modalpilihsiswa #modal-pilihsiswa").modal("hide");
-			    	
-			    		var rowCount = $('.table #list_sppsiswa tr').length;
+			            $("#list_bayarbarang").append(markup);
+			    		$("#modalpilihbarang #modal-pilihbarang").modal("hide");
+
+			    		var rowCount = $('.table #list_bayarbarang tr').length;
 						var i;
-						bayar_spp = 0;
-						
+						//var
+						bayar_bayar = 0;
+
 						for(i=0; i<rowCount; i++){
-							bayar_spp += spp;
+							bayar_bayar += bayar;
 						}
-						
-						$("#jumlah_spp").val(bayar_spp);
-						
+
+						$("#jumlah_bayar").val(bayar_bayar);
+
 					}		
 				})
 			})
-			
-			$(".table #list_sppsiswa").on("click", "#batal", function(){
+
+			$(".table #list_bayarbarang").on("click", "#batal", function(){
 	        	
-	        	var rowCount = $('.table #list_sppsiswa tr').length;				
+	        	var rowCount = $('.table #list_bayarbarang tr').length;				
         		$(this).parents("tr").remove();		   
-				
+
         		if(rowCount == 0) {
-					$("#jumlah_spp").val(0);
-					$("#bayar_spp").val(0);
+					$("#jumlah_bayar").val(0);
+					$("#bayar_bayar").val(0);
 					$('#selection_tipebayar').prop('selectedIndex',0);
 				} else {
-					bayar_spp -= 100000;
+					bayar_barang -= 100000;
 				}	
-        		
-	    		$("#jumlah_spp").val(bayar_spp);
-	    		$("#bayar_spp").val(bayar_spp);
-	        	
+
+	    		$("#jumlah_bayar").val(bayar_bayar);
+	    		$("#bayar_bayar").val(bayar_bayar);
+
 		    });
-			
+
+
+
 			$("#submit").on("click", function(){
-				$("#modal-success #modal-success-notif").modal("show");	        				
+	        	$("#modal-success #modal-success-notif").modal("show");	        				
        			setTimeout(function(){
         			$("#modal-success-notif").modal("hide");	        				
        			}, 1000)
        	    });
-			
+
 			$('#selection_tipebayar').on('change', function() {
 				var tipe = this.value;
-				
-				var getbayar = $("#jumlah_spp").val()
-				var cicil = $("#jumlah_spp").val()
-				
+
+				var getbayar = $("#jumlah_bayar").val()
+				var cicil = $("#jumlah_bayar").val()
+
 				if(tipe = "Cash"){
-					$("#bayar_spp").val(getbayar);
+					$("#bayar_bayar").val(getbayar);
 				} else {
-					$("#bayar_spp").val(cicil/2);	
+					$("#bayar_bayar").val(cicil/2);	
 				}		
 			});
-			
+
+
+
 			$("#hitung").on("click", function(){
-				bayar = $("#bayar_spp").val();
-				kembalian = bayar - bayar_spp;
-				
+				bayar = $("#bayar_bayar").val();
+				kembalian = bayar - bayar_bayar;
 				if(kembalian < 0) {
-					$("#kembalian_spp_label").text("Hutang");
-					$("#kembalian_spp").val(kembalian);					
+					$("#kembalian_bayar").val(0);					
 				} else {
-					$("#kembalian_spp").val(kembalian);
+					$("#kembalian_bayar").val(kembalian);
 				}
 			})
-			
+
 		})
 	</script>
 </body>
 
 </html>
+
